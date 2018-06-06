@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Visita</title>
+    <link rel="stylesheet" href="..//recursos/css/estiloVista.css">
 </head>
 <body>
 
     <form action="regVisita" method="POST">
-        {% csrf_token %}
+        <!-- {% csrf_token %} -->
     <label for="idVisita">Visita:</label>
     <input type="text" name="visita" required pattern="[0-9]*$">
     <br>
@@ -22,9 +23,8 @@
     <br>
     <label for="direccion">Direccion:</label>
     <input type="text" name="direccion" maxlength="100" required pattern="[a-z A-Z]*$">
-    <br>
-    <button>Guardar</button>
-
+    <br> <br>
+    <button class="guarda">Guardar</button> <button class="consulta">Consultar</button>
     </form>
 
 </body>
