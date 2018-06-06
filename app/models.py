@@ -1,15 +1,6 @@
 from django.db import models
 
 # Create your models here.
-class persona(models.Model):
-    idPersona = models.IntegerField(primary_key=True)
-    nombre = models.CharField(max_length=15)
-    edad= models.IntegerField()
-
-class cliente(models.Model):
-    clave = models.CharField(max_length=10,primary_key=True)
-    idPersona = models.ForeignKey(persona,on_delete=models.CASCADE)
-    ncompras = models.IntegerField()
 
 class libros(models.Model):
     isbn = models.CharField(max_length=30,primary_key=True)

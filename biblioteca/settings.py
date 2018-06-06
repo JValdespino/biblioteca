@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'biblioteca.wsgi.application'
+WSGI_APPLICATION = 'bibliotecaweb.wsgi.application'
 
 
 # Database
@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'biblioteca.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ejemplo',
+        'NAME': 'bibliotecaweb',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
