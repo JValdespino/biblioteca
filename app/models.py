@@ -1,0 +1,35 @@
+from django.db import models
+
+# Create your models here.
+class persona(models.Model):
+    idPersona = models.IntegerField(primary_key=True)
+    nombre = models.CharField(max_length=15)
+    edad= models.IntegerField()
+
+class cliente(models.Model):
+    clave = models.CharField(max_length=10,primary_key=True)
+    idPersona = models.ForeignKey(persona,on_delete=models.CASCADE)
+    ncompras = models.IntegerField()
+
+class libros(models.Model):
+    isbn = models.CharField(max_length=30,primary_key=True)
+    titulo = models.CharField(max_length=50)
+    autor = models.CharField(max_length=50)
+    editorial = models.CharField(max_length=50)
+    edicion = models.CharField(max_length=45)
+    fimp = models.DateField()
+    tipo = models.CharField(max_length=50)
+
+class prestamos(models.Moddel):
+    idPrestamos = models.IntegerField(primary_key=True)
+    libros_isbn = models.ForeignKey(libros,on_delete=models.CASCADE)
+    lector_Id1 = models.ForeignKey(lector,on_delete=model.CASCADE)
+    fecha = models.DateField()
+    fvencida = models.DateField()
+
+class visita(model.Moddel):
+    idLibro = models.IntegerField(primary_key=True)
+    nombre = models.CharField(max_length=80)
+    fecha = models.DateField()
+    telefono = IntegerField()
+    direccion = CharField(max_length=100)

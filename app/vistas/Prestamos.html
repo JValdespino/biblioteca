@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="Prestamos" method="POST">
+        {% csrf_token %}
+    <label for="idPrestamos">idPrestamos:</label>
+    <input type="text" name="idPrestamos" maxlength="11" required pattern="[0-9]*$">
+    <br>
+    <label for="libro">LibrosId</label>
+    <input type="text" name="librosid" maxlength="30" required pattern="[0-9]*$">
+    <br>
+    <label for="lector">LectorId</label>
+    <input type="text" name="lectorid" maxlength="11" required pattern="[0-9]*$">
+    <br>
+    <label for="fecha">Fecha</label>
+    <input type="text" name="fecha" required>
+    <br>
+    <label for="Fvencida">Fecha Vencida</label>
+    <input type="text" name="Fvencida" required>
+    <br>
+    <button>Guardar</button>
+</form>
+</body>
+</html>

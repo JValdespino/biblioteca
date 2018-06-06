@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Nombre</title>
+</head>
+<body>
+    <h2 style="color: crimson">Este es mi nombre:</h2> 
+    <h2>{{institucion|default:'No existe institucion'}}</h2>
+    <h1 style="color: brown">Jesus Pineda Valdespino</h1>
+    <h3>Haz accedido dentro de la pagina del creador de la pagina</h3>
+
+    {% if valores %}
+        <select name="" id="">
+        {% for v in valores%}
+            <option value="{{v.id}}"><h4>{{v.nombre}}</h4></option>
+        {% endfor %}
+        </select>
+    {% else %}
+        {# Mensaje para cuando no se resiven personas. #}
+        <h1>No existen opciones</h1>
+    {% endif %}
+</body>
+</html>
