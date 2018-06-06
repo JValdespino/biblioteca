@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lector</title>
+</head>
+<body>
+    <form action="lectors" method="POST">
+        {% csrf_token %}
+    <label for="isbn">IdLector:</label>
+    <input type="text" name="idl" maxlength="11" required pattern="[0-9]*$">
+    <br>
+    <label for="titulo">Nombre:</label>
+    <input type="text" name="nombre" maxlength="60" required>
+    <br>
+    <label for="autor">Edad:</label>
+    <input type="text" name="edad" maxlength="11" required>
+    <br>
+    <label for="editorial">Domicilio:</label>
+    <input type="text" name="domicilio" maxlength="100" required>
+    <br>
+    <label for="edicion">Cp:</label>
+    <input type="text" name="cp" maxlength="5" required>
+    <br>
+    <label for="fimp">Teléfono:</label>
+    <input type="text" name="telefono" maxlength="12">
+    <br>
+    <label for="tipo">Ocupación:</label>
+    <input type="text" name="ocupacion" maxlength="50" required>
+    <br>
+    <label for="tipo">Escuela o Trabajo:</label>
+    <input type="text" name="esc_o_trab" maxlength="100" required>
+    <br>
+    <label for="tipo">Teléfono escuela:</label>
+    <input type="text" name="tel_esc" maxlength="12" required>
+    <br>
+    <label for="tipo">Dirección escuela:</label>
+    <input type="text" name="dir_esc" maxlength="100" required>
+    <br>
+    <button>Guardar</button>
+
+    </form>
+</body>
+</html>
