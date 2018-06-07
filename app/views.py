@@ -3,7 +3,6 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 # from django.template.loader import get_template
 # from django.template import Context
-from . import persona
 from . import models
 
 # Create your views here.

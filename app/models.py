@@ -10,6 +10,18 @@ class libros(models.Model):
     fimp = models.DateField()
     tipo = models.CharField(max_length=50)
 
+class lector(models.Model):
+    Idl = models.IntegerField(primary_key=True)
+    Nombre = models.CharField(max_length=60)
+    Edad = models.IntegerField(max_length=11)
+    Domicilio = models.CharField(max_length=100)
+    Cp = models.CharField(max_length=5)
+    Telefono = models.CharField(max_length=12)
+    Ocupacion = models.CharField(max_length=50)
+    Esc_o_trab = models.CharField(max_length=100)
+    Tel_esc = models.CharField(max_length=12)
+    Dir_esc = models.CharField(max_length=100)
+
 class prestamo(models.Model):
     idPrestamos = models.IntegerField(primary_key=True)
     isbn = models.ForeignKey(libros,on_delete=models.CASCADE)
@@ -23,15 +35,3 @@ class visita(models.Model):
     fecha = models.DateField()
     telefono = models.IntegerField()
     direccion = models.CharField(max_length=100)
-
-class lector(models.Model):
-    Idl = models.IntegerField(primary_key=True)
-    Nombre = models.CharField(max_length=60)
-    Edad = models.Integer(max_length=11)
-    Domicilio = models.CharField(max_length=100)
-    Cp = models.CharField(max_length=5)
-    Telefono = models.CharField(max_length=12)
-    Ocupacion = models.CharField(max_length=50)
-    Esc_o_trab = models.CharField(max_length=100)
-    Tel_esc = models.CharField(max_length=12)
-    Dir_esc = models.CharField(max_length=100)
