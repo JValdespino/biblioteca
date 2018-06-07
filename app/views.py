@@ -48,3 +48,7 @@ def guardarlector(request):
         return render (request,'lector.html',{'msg': 'Registro realizado exitosamente'})
     else:
         return render(request, 'lector.html', {'msg': 'No se puede realizar el registro'})
+
+
+def consultas_int(request):
+        return render(request, 'consultaInt.html')

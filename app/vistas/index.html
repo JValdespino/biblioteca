@@ -89,7 +89,11 @@
     <button class="bt1">Visitas</button><br><br>
 </form>
 
-<button class="bt1">Consultas</button><br><br>
+<form action="consultaInt" method="POST">
+    {% csrf_token %}
+    <button class="bt1">Consultas en Sala</button><br><br>
+</form>
+
 <button class="bt1">Prestamos</button><br><br>
 </body>
 </html>

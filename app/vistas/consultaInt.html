@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultas en Sala</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/estiloVista.css' %}">
+</head>
+<body>
+    <form action="guardarconInt" method="POST">
+        {% csrf_token %}
+        <label for="idCon">ID Consulta: </label>
+        <input type="text" name="idCon" maxlength="15" required>
+        <br>
+        <label for="isbn">ISBN del Libro: </label>
+        <input type="text" name="isbn" maxlength="15" required>
+        <br>
+        <label for="NombreLe">Nombre del Lector: </label>
+        <input type="text" name="NombreLe" maxlength="30" required>
+        <br>
+        <label for="Ap">Apellido Paterno: </label>
+        <input type="text" name="Ape" maxlength="30" required>
+        <br>
+        <label for="Am">Apellido Materno: </label>
+        <input type="text" name="Am" maxlength="30" required>
+        <br>
+        <label for="Edad">Edad: </label>
+        <input type="number" name="Edad" required>
+        <br>
+        <label for="Tel">Telefono: </label>
+        <input type="text" name="Tel" required>
+        <br>
+        <label for="Dir">Direccion: </label>
+        <input type="text" name="Dir" maxlength="50" required>
+        <br>
+        <label for="EscP">Escuela de Procedencia: </label>
+        <input type="text" name="Am" maxlength="50" required>
+        <br>
+        <button>Guardar consulta</button>
+        <h1>{{msg}}</h1>
+    </form>
+</body>
+</html>
