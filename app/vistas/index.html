@@ -7,6 +7,7 @@
 <style>
     body{
     background-color: aquamarine;  background-size: cover;
+    text-align: center;
 }
 
 #biblio{
@@ -14,7 +15,7 @@
 
 }
     button{
-
+    
     font-family: Arial, Helvetica, sans-serif;
     border: none;
     background: #3a7999;
@@ -25,7 +26,6 @@
     position: relative;
     box-sizing: border-box;
     transition: all 500ms ease;
-    margin-left: 48%;
 
     }
 
@@ -78,7 +78,12 @@
     <p class="ti">Menu Principal</p>
 
 </div>
-<button class="bt">Libros</button><br><br>
+
+<form action="libro" method="POST">
+    {% csrf_token %}
+    <button class="bt">Libros</button><br><br>
+</form>
+
 <form action="lector" method="POST">
     {% csrf_token %}
     <button class="bt1">Lector</button><br><br>
@@ -89,6 +94,7 @@
     <button class="bt1">Visitas</button><br><br>
 </form>
 
+<<<<<<< HEAD
 <button class="bt1">Consultas</button><br><br>
 
 
@@ -98,5 +104,13 @@
 </form>
 
       
+=======
+<form action="consultaInt" method="POST">
+    {% csrf_token %}
+    <button class="bt1">Consultas en Sala</button><br><br>
+</form>
+
+<button class="bt1">Prestamos</button><br><br>
+>>>>>>> c111816a9070faca075a995e87d9407b9d1b86fb
 </body>
 </html>

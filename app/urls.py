@@ -10,6 +10,7 @@ urlpatterns = [
     path('visita/consulta', views.consultaVisita),
     path('guardaVisita', views.guardaVisita),
     path('visita', views.visita),
+    path('consultaInt', views.consultas_int),
     path('', views.index),
     
 ]

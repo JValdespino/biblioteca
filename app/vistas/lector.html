@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Lector</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/estilolec.css' %}">
 </head>
 <body>
     <form action="guardarlector" method="POST">
@@ -34,7 +36,7 @@
         <label for="Dir_esc">Dirección escuela o Trabajo:</label>
         <input type="text" name="Dir_esc" maxlength="100" required>
         <br>
-        <button>Guardar</button>
+        <button class="guardar">Guardar</button>
 
     </form>
     <form action="lector/consulta" method="POST">

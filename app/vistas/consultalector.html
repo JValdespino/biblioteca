@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta Lector</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/estiloCVisita.css' %}">
+</head>
+<body>
+        <table id="tablaLector">
+                <thead>
+                    <th>ID Lector</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Domicilio</th>
+                    <th>Cp</th>
+                    <th>Teléfono</th>
+                    <th>Ocupación</th>
+                    <th>Escuela o Trabajo</th>
+                    <th>Dirección escuela o Trabajo</th>
+                    <th colspan="2">Operaciones</th>
+                </thead>
+                <tbody>
+                    {% for fila in registro %}
+                    <tr>
+                        <td>{{fila.Idl}}</td>
+                        <td>{{fila.Nombre}}</td>
+                        <td>{{fila.Edad}}</td>
+                        <td>{{fila.Domicilio}}</td>
+                        <td>{{fila.Cp}}</td>
+                        <td>{{fila.Telefono}}</td>
+                        <td>{{fila.Ocupacion}}</td>
+                        <td>{{fila.Esc_o_trab}}</td>
+                        <td>{{fila.Tel_esc}}</td>
+                        <td>{{fila.Dir_esc}}</td>
+                        <td>
+                            <form action="editarlec" method="POST">
+                                {% csrf_token %}
+                                <input name="Idl" value="{{fila.Idl}}" type="hidden">
+                                <button class="editarlec">Editar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form id="{{fila.Idl}}" action="eliminarlec" method="POST">
+                                {% csrf_token %}
+                                <input name="Idl" value="{{fila.Idl}}" type="hidden">
+                                <button type="button" onclick="eliminarlec('{{fila.Idl}}','{{fila.Nombre}}')" class="eliminarlec">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+        
+                </tfoot>
+            </table>
+</body>
+</html>

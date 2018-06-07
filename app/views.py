@@ -43,16 +43,18 @@ def guardarlector(request):
         Edad = request.POST['Edad']
         Domicilio = request.POST['Domicilio']
         Cp = request.POST['Cp']
+        Telefono = request.POST['Telefono']
         Ocupacion = request.POST['Ocupacion']
         Esc_o_trab = request.POST['Esc_o_trab']
         Tel_esc = request.POST['Tel_esc']
         Dir_esc = request.POST['Dir_esc']
-        p = models.lector(Nombre = Nombre,Edad = Edad, Domicilio = Domicilio, Cp = Cp, Ocupacion= Ocupacion, Esc_o_trab = Esc_o_trab, Tel_esc = Tel_esc, Dir_esc = Dir_esc)
+        p = models.lector(Nombre = Nombre,Edad = Edad, Domicilio = Domicilio, Cp = Cp, Telefono = Telefono, Ocupacion= Ocupacion, Esc_o_trab = Esc_o_trab, Tel_esc = Tel_esc, Dir_esc = Dir_esc)
         p.save()
         return render (request,'lector.html',{'msg': 'Registro realizado exitosamente'})
     else:
         return render(request, 'lector.html', {'msg': 'No se puede realizar el registro'})
 
+<<<<<<< HEAD
 
 def guardarprestamos(request):
     if 'fecha' in request.POST and 'fvencida' in request.POST:
@@ -67,3 +69,20 @@ def guardarprestamos(request):
 def condultaPrestamos(request):
     registro = models.prestamos.objects.all()
     return render (request,'consultaPrestamos.html',{"registro":registro})
+=======
+def guardaLibro(request):
+    if 'isbn' in request.POST and 'titulo' in request.POST and 'autor' in request.POST and 'editorial' in request.POST and 'edicion' in request.POST and 'fimp' in request.POST and 'tipo' in request.POST:
+        isbn = request.POST['isbn']
+        titulo = request.POST['titulo']
+        autor = request.POST['autor']
+        editorial = request.POST['editorial']
+        edicion = request.POST['edicion']
+        fimp = request.POST['fimp']
+        tipo = request.POST['tipo']
+
+        p = models.libros(isbn = isbn, titulo = titulo, autor = autor,editorial = editorial,edicion = edicion,fimp = fimp,tipo = tipo)
+        p.save()
+        return render (request,'ag_lib.html',{'msg': 'Registro realizado exitosamente'})
+    else:
+        return render(request, 'ag_lib.html', {'msg': 'No se puede realizar el registro'})
+>>>>>>> c111816a9070faca075a995e87d9407b9d1b86fb
