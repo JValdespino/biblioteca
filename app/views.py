@@ -53,6 +53,7 @@ def guardarlector(request):
     else:
         return render(request, 'lector.html', {'msg': 'No se puede realizar el registro'})
 
+<<<<<<< HEAD
 def guardaLibro(request):
     if 'isbn' in request.POST and 'titulo' in request.POST and 'autor' in request.POST and 'editorial' in request.POST and 'edicion' in request.POST and 'fimp' in request.POST and 'tipo' in request.POST:
         isbn = request.POST['isbn']
