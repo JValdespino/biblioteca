@@ -5,6 +5,18 @@
     <title>Consulta Visita</title>
     {% load static from staticfiles %}
     <link rel="stylesheet" href="{% static 'css/estiloCVisita.css' %}">
+
+    <script>
+        function eliminar(id,nom){
+            var res = confirm('Confirma eliminar a '+nom+' con el ID '+id);
+            if(res){
+                var formulario = document.getElementById(id);
+                formulario.submit();
+            }
+        }
+    </script>
+
+
 </head>
 <body>
         <table id="tablaVisita">
@@ -25,14 +37,14 @@
                         <td>{{fila.telefono}}</td>
                         <td>{{fila.direccion}}</td>
                         <td>
-                            <form action="editar" method="POST">
+                            <form action="editarV" method="POST">
                                 {% csrf_token %}
                                 <input name="idVisita" value="{{fila.idVisita}}" type="hidden">
                                 <button class="editar">Editar</button>
                             </form>
                         </td>
                         <td>
-                            <form id="{{fila.idVisita}}" action="eliminar" method="POST">
+                            <form id="{{fila.idVisita}}" action="elimi" method="POST">
                                 {% csrf_token %}
                                 <input name="idVisita" value="{{fila.idVisita}}" type="hidden">
                                 <button type="button" onclick="eliminar('{{fila.idVisita}}','{{fila.nombre}}')" class="eliminar">Eliminar</button>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modificacio Visita</title>
+</head>
+<body>
+    <form action="modificarVisita" method="POST">
+        {% csrf_token %}
+        <input type="text" name="idVisita" value="{{reg.idVisita}}"><br>
+        <input type="text" name="nombre" value="{{reg.nombre}}"><br>
+        <input type="text" name="fecha" value="{{reg.fecha}}"> <br>
+        <input type="text" name="telefono" value="{{reg.telefono}}"> <br>
+        <input type="text" name="direccion" value="{{reg.direccion}}"> <br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

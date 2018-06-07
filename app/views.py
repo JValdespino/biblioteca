@@ -68,3 +68,9 @@ def guardaLibro(request):
         return render (request,'ag_lib.html',{'msg': 'Registro realizado exitosamente'})
     else:
         return render(request, 'ag_lib.html', {'msg': 'No se puede realizar el registro'})
+
+def elimi(request):
+    if 'idVisita' in request.POST:
+        per = models.visita.objects.get(idVisita=request.POST['idVisita'])
+        per.delete()
+    return redirect('/menu/visita/consulta')
