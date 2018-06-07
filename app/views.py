@@ -31,7 +31,7 @@ def guardaVisita(request):
 
 def consultaVisita(request):
     registro = models.visita.objects.all()
-    return render(request,'consultaVisita.html',{"registro":registro}
+    return render(request,'consultaVisita.html',{"registro":registro})
 
 def guardarlector(request):
     if 'Idl' in request.POST and 'Nombre' in request.POST and 'Edad' in request.POST and 'Domicilio' in request.POST and 'Cp' in request.POST and 'Telefono' in request.POST and 'Ocupacion' in request.POST and 'Esc_o_trab' in request.POST and 'Tel_esc' in request.POST and 'Dir_esc' in request.POST:
