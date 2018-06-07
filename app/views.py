@@ -34,8 +34,7 @@ def consultaVisita(request):
     return render(request,'consultaVisita.html',{"registro":registro})
 
 def guardarlector(request):
-    if 'Idl' in request.POST and 'Nombre' in request.POST and 'Edad' in request.POST and 'Domicilio' in request.POST and 'Cp' in request.POST and 'Telefono' in request.POST and 'Ocupacion' in request.POST and 'Esc_o_trab' in request.POST and 'Tel_esc' in request.POST and 'Dir_esc' in request.POST:
-        Idl = request.POST['Idl']
+    if 'Nombre' in request.POST and 'Edad' in request.POST and 'Domicilio' in request.POST and 'Cp' in request.POST and 'Telefono' in request.POST and 'Ocupacion' in request.POST and 'Esc_o_trab' in request.POST and 'Tel_esc' in request.POST and 'Dir_esc' in request.POST:
         Nombre = request.POST['Nombre']
         Edad = request.POST['Edad']
         Domicilio = request.POST['Domicilio']
@@ -44,7 +43,7 @@ def guardarlector(request):
         Esc_o_trab = request.POST['Esc_o_trab']
         Tel_esc = request.POST['Tel_esc']
         Dir_esc = request.POST['Dir_esc']
-        p = models.lector(Idl = Idl,Nombre = Nombre,Edad = Edad, Domicilio = Domicilio, Cp = Cp, Ocupacion= Ocupacion, Esc_o_trab = Esc_o_trab, Tel_esc = Tel_esc, Dir_esc = Dir_esc)
+        p = models.lector(Nombre = Nombre,Edad = Edad, Domicilio = Domicilio, Cp = Cp, Ocupacion= Ocupacion, Esc_o_trab = Esc_o_trab, Tel_esc = Tel_esc, Dir_esc = Dir_esc)
         p.save()
         return render (request,'lector.html',{'msg': 'Registro realizado exitosamente'})
     else:
