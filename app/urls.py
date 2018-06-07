@@ -7,4 +7,6 @@ urlpatterns = [
     path('guardaVisita', views.guardaVisita),
     path('visita', views.visita),
     path('', views.index),
+    path('guardarlector',views.guardarlector),
+    path('lector',views.lector)
 ]
