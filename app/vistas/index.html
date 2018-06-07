@@ -78,7 +78,12 @@
     <p class="ti">Menu Principal</p>
 
 </div>
-<button class="bt">Libros</button><br><br>
+
+<form action="libro" method="POST">
+    {% csrf_token %}
+    <button class="bt">Libros</button><br><br>
+</form>
+
 <form action="lector" method="POST">
     {% csrf_token %}
     <button class="bt1">Lector</button><br><br>
