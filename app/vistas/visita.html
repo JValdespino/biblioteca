@@ -10,9 +10,6 @@
 
     <form action="guardaVisita" method="POST">
         {% csrf_token %}
-        <label for="idVisita">ID VISITA :</label>
-        <input type="text" name="idVisita" required pattern="[0-9]*$">
-        <br>
         <label for="nombre" >NOMBRE :</label>
         <input type="text" name="nombre" maxlength="80" required>
         <br>

@@ -30,7 +30,7 @@ class prestamo(models.Model):
     fvencida = models.DateField()
 
 class visita(models.Model):
-    idVisita = models.IntegerField(primary_key=True)
+    idVisita = models.AutoField(primary_key=True, auto_created=True)
     nombre = models.CharField(max_length=80)
     fecha = models.DateField()
     telefono = models.CharField(max_length=15)

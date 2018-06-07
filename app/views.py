@@ -14,14 +14,13 @@ def visita(request):
     return render(request, 'visita.html')
 
 def guardaVisita(request):
-    if 'idVisita' in request.POST and 'nombre' in request.POST and 'fecha' in request.POST and 'telefono' in request.POST and 'direccion' in request.POST:
-        idVisita = request.POST['idVisita']
+    if 'nombre' in request.POST and 'fecha' in request.POST and 'telefono' in request.POST and 'direccion' in request.POST:
         nombre = request.POST['nombre']
         fecha = request.POST['fecha']
         telefono = request.POST['telefono']
         direccion = request.POST['direccion']
 
-        p = models.visita(idVisita = idVisita,nombre = nombre,fecha = fecha, telefono = telefono, direccion = direccion)
+        p = models.visita(nombre = nombre,fecha = fecha, telefono = telefono, direccion = direccion)
         p.save()
         return render (request,'visita.html',{'msg': 'Registro realizado exitosamente'})
     else:
