@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 
 class libros(models.Model):
@@ -11,21 +10,21 @@ class libros(models.Model):
     fimp = models.DateField()
     tipo = models.CharField(max_length=50)
 
-class prestamos(models.Moddel):
+class prestamo(models.Model):
     idPrestamos = models.IntegerField(primary_key=True)
     libros_isbn = models.ForeignKey(libros,on_delete=models.CASCADE)
-    lector_Id1 = models.ForeignKey(lector,on_delete=model.CASCADE)
+    lector_Id1 = models.ForeignKey(lector,on_delete=models.CASCADE)
     fecha = models.DateField()
     fvencida = models.DateField()
 
-class visita(models.Moddel):
+class visita(models.Model):
     idLibro = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=80)
     fecha = models.DateField()
     telefono = models.IntegerField()
     direccion = models.CharField(max_length=100)
 
-class lector(models.Moddel):
+class lector(models.Model):
     Idl = models.IntegerField(primary_key=True)
     Nombre = models.CharField(max_length=60)
     Edad = models.Integer(max_length=11)
