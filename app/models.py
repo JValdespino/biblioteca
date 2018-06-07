@@ -18,12 +18,12 @@ class prestamos(models.Moddel):
     fecha = models.DateField()
     fvencida = models.DateField()
 
-class visita(model.Moddel):
+class visita(models.Moddel):
     idLibro = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=80)
     fecha = models.DateField()
-    telefono = IntegerField()
-    direccion = CharField(max_length=100)
+    telefono = models.IntegerField()
+    direccion = models.CharField(max_length=100)
 
 class lector(models.Moddel):
     Idl = models.IntegerField(primary_key=True)
