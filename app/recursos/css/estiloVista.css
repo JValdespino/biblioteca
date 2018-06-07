@@ -1,4 +1,5 @@
 html, body{
+    background-color: aquamarine;
     margin: 2%;
     font-size: 170%;
 }
@@ -9,7 +10,7 @@ label{
 }
 
 input{
-  border: 2px solid rgba(36, 94, 255, 0.267);
+  border: 2px solid rgba(255, 4, 4, 0.349);
   font-size: 18px;
   font-family: Arial, Verdana;
   padding-left: 20px;
@@ -20,8 +21,8 @@ input{
 }
 
 input:hover{
-    border: 3px solid rgba(121, 255, 177, 0.267);
-    background-color: rgba(53, 255, 80, 0.123);
+    border: 3px solid rgba(255, 6, 6, 0.247);
+    background-color: rgba(255, 21, 21, 0.200);
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 17px;
