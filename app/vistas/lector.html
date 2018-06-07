@@ -7,9 +7,6 @@
 <body>
     <form action="guardarlector" method="POST">
             {% csrf_token %}
-        <label for="Idl">IdLector:</label>
-        <input type="text" name="Idl" maxlength="11" required pattern="[0-9]*$">
-        <br>
         <label for="Nombre">Nombre:</label>
         <input type="text" name="Nombre" maxlength="60" required>
         <br>
