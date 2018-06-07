@@ -20,7 +20,7 @@ class libros(models.Model):
     fimp = models.DateField()
     tipo = models.CharField(max_length=50)
 
-class prestamos(models.Moddel):
+class prestamos(models.Model):
     idPrestamos = models.IntegerField(primary_key=True)
     libros_isbn = models.ForeignKey(libros,on_delete=models.CASCADE)
     lector_Id1 = models.ForeignKey(lector,on_delete=model.CASCADE)
