@@ -79,7 +79,10 @@
 
 </div>
 <button class="bt">Libros</button><br><br>
-<button class="bt1">Lector</button><br><br>
+<form action="lector" method="POST">
+    {% csrf_token %}
+    <button class="bt1">Lector</button><br><br>
+</form>
 
 <form action="visita" method="POST">
         {% csrf_token %}

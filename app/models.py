@@ -10,8 +10,19 @@ class libros(models.Model):
     fimp = models.DateField()
     tipo = models.CharField(max_length=50)
 
+class consultaInt(models.Model):
+    idCon=models.IntegerField(primary_key=True)
+    isbn=models.ForeignKey(libros,on_delete=models.CASCADE)
+    NombreLe=models.CharField(max_length=50)
+    Ap=models.CharField(max_length=50)
+    Am=models.CharField(max_length=50)
+    Edad=models.IntegerField()
+    Tel=models.CharField(max_length=15)
+    Dir=models.CharField(max_length=80)
+    EscP=models.CharField(max_length=80)
+
 class lector(models.Model):
-    Idl = models.IntegerField(primary_key=True)
+    Idl = models.AutoField(primary_key=True, auto_created=True)
     Nombre = models.CharField(max_length=60)
     Edad = models.IntegerField()
     Domicilio = models.CharField(max_length=100)
@@ -30,7 +41,7 @@ class prestamo(models.Model):
     fvencida = models.DateField()
 
 class visita(models.Model):
-    idVisita = models.IntegerField(primary_key=True)
+    idVisita = models.AutoField(primary_key=True, auto_created=True)
     nombre = models.CharField(max_length=80)
     fecha = models.DateField()
     telefono = models.CharField(max_length=15)
