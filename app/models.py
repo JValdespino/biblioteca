@@ -1,15 +1,5 @@
 from django.db import models
-
 # Create your models here.
-class persona(models.Model):
-    idPersona = models.IntegerField(primary_key=True)
-    nombre = models.CharField(max_length=15)
-    edad= models.IntegerField()
-
-class cliente(models.Model):
-    clave = models.CharField(max_length=10,primary_key=True)
-    idPersona = models.ForeignKey(persona,on_delete=models.CASCADE)
-    ncompras = models.IntegerField()
 
 class libros(models.Model):
     isbn = models.CharField(max_length=30,primary_key=True)
@@ -20,16 +10,28 @@ class libros(models.Model):
     fimp = models.DateField()
     tipo = models.CharField(max_length=50)
 
-class prestamos(models.Model):
+class lector(models.Model):
+    Idl = models.IntegerField(primary_key=True)
+    Nombre = models.CharField(max_length=60)
+    Edad = models.IntegerField()
+    Domicilio = models.CharField(max_length=100)
+    Cp = models.CharField(max_length=5)
+    Telefono = models.CharField(max_length=12)
+    Ocupacion = models.CharField(max_length=50)
+    Esc_o_trab = models.CharField(max_length=100)
+    Tel_esc = models.CharField(max_length=12)
+    Dir_esc = models.CharField(max_length=100)
+
+class prestamo(models.Model):
     idPrestamos = models.IntegerField(primary_key=True)
-    libros_isbn = models.ForeignKey(libros,on_delete=models.CASCADE)
-    lector_Id1 = models.ForeignKey(lector,on_delete=model.CASCADE)
+    isbn = models.ForeignKey(libros,on_delete=models.CASCADE)
+    Idl = models.ForeignKey(lector,on_delete=models.CASCADE)
     fecha = models.DateField()
     fvencida = models.DateField()
 
-class visita(model.Moddel):
-    idLibro = models.IntegerField(primary_key=True)
+class visita(models.Model):
+    idVisita = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=80)
     fecha = models.DateField()
-    telefono = IntegerField()
-    direccion = CharField(max_length=100)
+    telefono = models.CharField(max_length=15)
+    direccion = models.CharField(max_length=100)
