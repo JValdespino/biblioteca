@@ -16,8 +16,9 @@ def visita(request):
 def lector(request):
     return render(request, 'lector.html')
 
-def libro(request):
-    return render(request, 'ag_lib.html')
+def prestamos(request):
+    lista = models.lector.objects.all()
+    return render(request, 'Prestamos.html', {'lista': lista})
 
 def guardaVisita(request):
     if 'nombre' in request.POST and 'fecha' in request.POST and 'telefono' in request.POST and 'direccion' in request.POST:
@@ -74,3 +75,14 @@ def elimi(request):
         per = models.visita.objects.get(idVisita=request.POST['idVisita'])
         per.delete()
     return redirect('/menu/visita/consulta')
+
+
+def guardarprestamos(request):
+    if 'fecha' in request.POST and 'Fvencida' in request.POST:
+        fecha=request.POST['Fecha']
+        Fvencida=request.POST['Fvencida']
+        p=models.prestamos(Fecha=Fecha,fechaVencida=Fvencida)
+        p.save()
+        return render (request, 'Prestamos.html',{'msg':'Registro realizado exitosamente'})
+    else:
+        return render(request,'Prestamos.html',{'msg':'Registro realizado exitosamente'})
