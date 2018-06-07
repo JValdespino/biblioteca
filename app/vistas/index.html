@@ -94,23 +94,16 @@
     <button class="bt1">Visitas</button><br><br>
 </form>
 
-<<<<<<< HEAD
-<button class="bt1">Consultas</button><br><br>
-
-
-<form action="prestamos" method="POST">
-      {% csrf_token %}
-      <button class="bt1">Prestamos</button><br><br>
-</form>
-
-      
-=======
 <form action="consultaInt" method="POST">
     {% csrf_token %}
     <button class="bt1">Consultas en Sala</button><br><br>
 </form>
 
-<button class="bt1">Prestamos</button><br><br>
->>>>>>> c111816a9070faca075a995e87d9407b9d1b86fb
+
+<form action="prestamos" method="POST">
+    {%csrf_token%}
+    <button class="bt1">Prestamos</button><br><br>
+</form>
+
 </body>
 </html>

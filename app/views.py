@@ -54,22 +54,6 @@ def guardarlector(request):
     else:
         return render(request, 'lector.html', {'msg': 'No se puede realizar el registro'})
 
-<<<<<<< HEAD
-
-def guardarprestamos(request):
-    if 'fecha' in request.POST and 'fvencida' in request.POST:
-        fecha = request.POST['Fecha']
-        fvencida = request.POST['Fvencida']
-        p = models.prestamos(Fecha=fecha,Fvencida=Fvencida)
-        p.save()
-        return render (request,'Prestamos.html',{'msg':'Registro realizado exitosamente'})
-    else:
-        return render(request,'Prestamos.html',{'msg':'No se puede realizar el registro'})
-
-def condultaPrestamos(request):
-    registro = models.prestamos.objects.all()
-    return render (request,'consultaPrestamos.html',{"registro":registro})
-=======
 def guardaLibro(request):
     if 'isbn' in request.POST and 'titulo' in request.POST and 'autor' in request.POST and 'editorial' in request.POST and 'edicion' in request.POST and 'fimp' in request.POST and 'tipo' in request.POST:
         isbn = request.POST['isbn']
@@ -85,4 +69,15 @@ def guardaLibro(request):
         return render (request,'ag_lib.html',{'msg': 'Registro realizado exitosamente'})
     else:
         return render(request, 'ag_lib.html', {'msg': 'No se puede realizar el registro'})
->>>>>>> c111816a9070faca075a995e87d9407b9d1b86fb
+
+
+
+def guardarprestamos(request):
+    if 'fecha' in request.POST and 'Fvencida' in request.POST:
+        fecha=request.POST['Fecha']
+        Fvencida=request.POST['Fvencida']
+        p=models.prestamos(Fecha=Fecha,fechaVencida=Fvencida)
+        p.save()
+        return render (request, 'Prestamos.html',{'msg':'Registro realizado exitosamente'})
+    else:
+        return render(request,'Prestamos.html',{'msg':'Registro realizado exitosamente'})
