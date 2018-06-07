@@ -16,6 +16,9 @@ def visita(request):
 def lector(request):
     return render(request, 'lector.html')
 
+def libro(request):
+    return render(request, 'ag_lib.html')
+
 def guardaVisita(request):
     if 'nombre' in request.POST and 'fecha' in request.POST and 'telefono' in request.POST and 'direccion' in request.POST:
         nombre = request.POST['nombre']
@@ -50,9 +53,18 @@ def guardarlector(request):
     else:
         return render(request, 'lector.html', {'msg': 'No se puede realizar el registro'})
 
+def guardaLibro(request):
+    if 'isbn' in request.POST and 'titulo' in request.POST and 'autor' in request.POST and 'editorial' in request.POST and 'edicion' in request.POST and 'fimp' in request.POST and 'tipo' in request.POST:
+        isbn = request.POST['isbn']
+        titulo = request.POST['titulo']
+        autor = request.POST['autor']
+        editorial = request.POST['editorial']
+        edicion = request.POST['edicion']
+        fimp = request.POST['fimp']
+        tipo = request.POST['tipo']
 
-def consultas_int(request):
-        return render(request, 'consultaInt.html')
-def consultalector(request):
-    registro = models.lector.objects.all()
-    return render(request,'consultalector.html',{"registro":registro})
+        p = models.libros(isbn = isbn, titulo = titulo, autor = autor,editorial = editorial,edicion = edicion,fimp = fimp,tipo = tipo)
+        p.save()
+        return render (request,'ag_lib.html',{'msg': 'Registro realizado exitosamente'})
+    else:
+        return render(request, 'ag_lib.html', {'msg': 'No se puede realizar el registro'})
