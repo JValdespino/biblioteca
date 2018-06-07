@@ -13,7 +13,7 @@ class libros(models.Model):
 class lector(models.Model):
     Idl = models.IntegerField(primary_key=True)
     Nombre = models.CharField(max_length=60)
-    Edad = models.IntegerField(max_length=11)
+    Edad = models.IntegerField()
     Domicilio = models.CharField(max_length=100)
     Cp = models.CharField(max_length=5)
     Telefono = models.CharField(max_length=12)
@@ -33,5 +33,5 @@ class visita(models.Model):
     idVisita = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=80)
     fecha = models.DateField()
-    telefono = models.IntegerField()
+    telefono = models.CharField(max_length=15)
     direccion = models.CharField(max_length=100)
