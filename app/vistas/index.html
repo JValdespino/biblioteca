@@ -90,6 +90,13 @@
 </form>
 
 <button class="bt1">Consultas</button><br><br>
-<button class="bt1">Prestamos</button><br><br>
+
+
+<form action="prestamos" method="POST">
+      {% csrf_token %}
+      <button class="bt1">Prestamos</button><br><br>
+</form>
+
+      
 </body>
 </html>

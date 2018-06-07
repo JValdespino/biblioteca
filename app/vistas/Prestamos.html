@@ -7,22 +7,38 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="Prestamos" method="POST">
+    <form action="guardarprestamos" method="POST">
         {% csrf_token %}
     <label for="idPrestamos">idPrestamos:</label>
     <input type="text" name="idPrestamos" maxlength="11" required pattern="[0-9]*$">
     <br>
-    <label for="libro">LibrosId</label>
-    <input type="text" name="librosid" maxlength="30" required pattern="[0-9]*$">
+    
+    <label for="Isbn_id">Libros:</label>
+    <Select name="Isbn_id">
+        {% for xx in listar %} 
+        <option value="{{xx.isbn}}">{{xx.isbn}}</option>
+        {%endfor%}
+    </Select>
     <br>
-    <label for="lector">LectorId</label>
-    <input type="text" name="lectorid" maxlength="11" required pattern="[0-9]*$">
-    <br>
+    
+
+    <label for="Idl_id">Lector:</label>
+    <SELECT NAME="Idl_id"> 
+        {% for x in lista %}
+        <OPTION VALUE="{{x.Idl}}">{{x.Nombre}}</OPTION>
+        {%endfor%}
+    </SELECT>
+     <br>
+
+
     <label for="fecha">Fecha</label>
     <input type="text" name="fecha" required>
     <br>
     <label for="Fvencida">Fecha Vencida</label>
     <input type="text" name="Fvencida" required>
+    <br>
+     
+    
     <br>
     <button>Guardar</button>
 </form>

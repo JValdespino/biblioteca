@@ -34,7 +34,7 @@ class lector(models.Model):
     Dir_esc = models.CharField(max_length=100)
 
 class prestamo(models.Model):
-    idPrestamos = models.IntegerField(primary_key=True)
+    idPrestamos = models.AutoField(primary_key=True)
     isbn = models.ForeignKey(libros,on_delete=models.CASCADE)
     Idl = models.ForeignKey(lector,on_delete=models.CASCADE)
     fecha = models.DateField()

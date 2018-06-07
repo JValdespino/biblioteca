@@ -16,6 +16,10 @@ def visita(request):
 def lector(request):
     return render(request, 'lector.html')
 
+def prestamos(request):
+    lista = models.lector.objects.all()
+    return render(request, 'Prestamos.html', {'lista': lista})
+
 def guardaVisita(request):
     if 'nombre' in request.POST and 'fecha' in request.POST and 'telefono' in request.POST and 'direccion' in request.POST:
         nombre = request.POST['nombre']
@@ -48,3 +52,18 @@ def guardarlector(request):
         return render (request,'lector.html',{'msg': 'Registro realizado exitosamente'})
     else:
         return render(request, 'lector.html', {'msg': 'No se puede realizar el registro'})
+
+
+def guardarprestamos(request):
+    if 'fecha' in request.POST and 'fvencida' in request.POST:
+        fecha = request.POST['Fecha']
+        fvencida = request.POST['Fvencida']
+        p = models.prestamos(Fecha=fecha,Fvencida=Fvencida)
+        p.save()
+        return render (request,'Prestamos.html',{'msg':'Registro realizado exitosamente'})
+    else:
+        return render(request,'Prestamos.html',{'msg':'No se puede realizar el registro'})
+
+def condultaPrestamos(request):
+    registro = models.prestamos.objects.all()
+    return render (request,'consultaPrestamos.html',{"registro":registro})
