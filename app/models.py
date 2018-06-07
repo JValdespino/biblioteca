@@ -11,7 +11,7 @@ class libros(models.Model):
     tipo = models.CharField(max_length=50)
 
 class lector(models.Model):
-    Idl = models.IntegerField(primary_key=True)
+    Idl = models.AutoField(primary_key=True, auto_created=True)
     Nombre = models.CharField(max_length=60)
     Edad = models.IntegerField()
     Domicilio = models.CharField(max_length=100)
