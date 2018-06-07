@@ -28,14 +28,14 @@
                             <form action="editar" method="POST">
                                 {% csrf_token %}
                                 <input name="idVisita" value="{{fila.idVisita}}" type="hidden">
-                                <button>Editar</button>
+                                <button class="editar">Editar</button>
                             </form>
                         </td>
                         <td>
                             <form id="{{fila.idVisita}}" action="eliminar" method="POST">
                                 {% csrf_token %}
                                 <input name="idVisita" value="{{fila.idVisita}}" type="hidden">
-                                <button type="button" onclick="eliminar('{{fila.idVisita}}','{{fila.nombre}}')">Eliminar</button>
+                                <button type="button" onclick="eliminar('{{fila.idVisita}}','{{fila.nombre}}')" class="eliminar">Eliminar</button>
                             </form>
                         </td>
                     </tr>
