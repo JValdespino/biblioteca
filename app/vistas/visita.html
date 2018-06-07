@@ -8,24 +8,28 @@
 </head>
 <body>
 
-    <form action="regVisita" method="POST">
-        <!-- {% csrf_token %} -->
-    <label for="idVisita">VISITA :</label>
-    <input type="text" name="visita" required pattern="[0-9]*$">
-    <br>
-    <label for="nombre">NOMBRE :</label>
-    <input type="text" name="nombre" maxlength="80" required pattern="[a-z A-Z]*$">
-    <br>
-    <label for="fecha">FECHA :</label>
-    <input type="date" name="fecha" required>
-    <br>
-    <label for="tel">TELEFONO :</label>
-    <input type="text" name="telefono" required pattern="[0-9]{10}$">
-    <br>
-    <label for="direccion">DIRECCION :</label>
-    <input type="text" name="direccion" maxlength="100" required pattern="[a-z A-Z]*$">
-    <br> <br>
-    <button class="guarda">Guardar</button> <button class="consulta">Consultar</button>
+    <form action="guardaVisita" method="POST">
+        {% csrf_token %}
+        <label for="idVisita">VISITA :</label>
+        <input type="text" name="idVisita" required pattern="[0-9]*$">
+        <br>
+        <label for="nombre">NOMBRE :</label>
+        <input type="text" name="nombre" maxlength="80" required pattern="[a-z A-Z]*$">
+        <br>
+        <label for="fecha">FECHA :</label>
+        <input type="date" name="fecha" required>
+        <br>
+        <label for="tel">TELEFONO :</label>
+        <input type="text" name="telefono" required pattern="[0-9]{10}$">
+        <br>
+        <label for="direccion">DIRECCION :</label>
+        <input type="text" name="direccion" maxlength="100" required pattern="[a-z A-Z]*$">
+        <br> <br>
+            <button class="guarda">Guardar</button>     
+    </form>
+    <form action="visita/consulta" method="POST">
+            {% csrf_token %}
+            <button class="consulta">Consultar</button>
     </form>
 
 </body>
