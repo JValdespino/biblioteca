@@ -39,11 +39,12 @@ def guardarlector(request):
         Edad = request.POST['Edad']
         Domicilio = request.POST['Domicilio']
         Cp = request.POST['Cp']
+        Telefono = request.POST['Telefono']
         Ocupacion = request.POST['Ocupacion']
         Esc_o_trab = request.POST['Esc_o_trab']
         Tel_esc = request.POST['Tel_esc']
         Dir_esc = request.POST['Dir_esc']
-        p = models.lector(Nombre = Nombre,Edad = Edad, Domicilio = Domicilio, Cp = Cp, Ocupacion= Ocupacion, Esc_o_trab = Esc_o_trab, Tel_esc = Tel_esc, Dir_esc = Dir_esc)
+        p = models.lector(Nombre = Nombre,Edad = Edad, Domicilio = Domicilio, Cp = Cp, Telefono = Telefono, Ocupacion= Ocupacion, Esc_o_trab = Esc_o_trab, Tel_esc = Tel_esc, Dir_esc = Dir_esc)
         p.save()
         return render (request,'lector.html',{'msg': 'Registro realizado exitosamente'})
     else:
@@ -52,3 +53,6 @@ def guardarlector(request):
 
 def consultas_int(request):
         return render(request, 'consultaInt.html')
+def consultalector(request):
+    registro = models.lector.objects.all()
+    return render(request,'consultalector.html',{"registro":registro})
