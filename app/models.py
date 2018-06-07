@@ -12,13 +12,13 @@ class libros(models.Model):
 
 class prestamo(models.Model):
     idPrestamos = models.IntegerField(primary_key=True)
-    libros_isbn = models.ForeignKey(libros,on_delete=models.CASCADE)
-    lector_Id1 = models.ForeignKey(lector,on_delete=models.CASCADE)
+    isbn = models.ForeignKey(libros,on_delete=models.CASCADE)
+    Idl = models.ForeignKey(lector,on_delete=models.CASCADE)
     fecha = models.DateField()
     fvencida = models.DateField()
 
 class visita(models.Model):
-    idLibro = models.IntegerField(primary_key=True)
+    idVisita = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=80)
     fecha = models.DateField()
     telefono = models.IntegerField()

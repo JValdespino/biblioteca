@@ -10,3 +10,6 @@ from . import models
 
 def index(request):
     return render(request, 'index.html')
+
+def visita(request):
+    return redirect('visita.html')
