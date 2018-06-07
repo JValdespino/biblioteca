@@ -26,3 +26,7 @@ def guardaVisita(request):
         return render (request,'visita.html',{'msg': 'Registro realizado exitosamente'})
     else:
         return render(request, 'visita.html', {'msg': 'No se puede realizar el registro'})
+
+def consultaVisita(request):
+    registro = models.visita.objects.all()
+    return render(request,'consultaVisita.html',{"registro":registro})

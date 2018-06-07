@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta Visita</title>
+</head>
+<body>
+        <table>
+                <thead>
+                    <th>ID Visita</th>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Telefono</th>
+                    <th>Direccion</th>
+                    <th colspan="2">Operaciones</th>
+                </thead>
+                <tbody>
+                    {% for fila in registro %}
+                    <tr>
+                        <td>{{fila.idVisita}}</td>
+                        <td>{{fila.nombre}}</td>
+                        <td>{{fila.fecha}}</td>
+                        <td>{{fila.telefono}}</td>
+                        <td>{{fila.direccion}}</td>
+                        <td>
+                            <form action="editar" method="POST">
+                                {% csrf_token %}
+                                <input name="idVisita" value="{{fila.idVisita}}" type="hidden">
+                                <button>Editar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form id="{{fila.idVisita}}" action="eliminar" method="POST">
+                                {% csrf_token %}
+                                <input name="idVisita" value="{{fila.idVisita}}" type="hidden">
+                                <button type="button" onclick="eliminar('{{fila.idVisita}}','{{fila.nombre}}')">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+        
+                </tfoot>
+            </table>
+</body>
+</html>
