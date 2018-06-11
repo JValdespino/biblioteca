@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Modificacio Visita</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/estiloVisita.css' %}">
 </head>
 <body>
+        <p style="font-family: Arial, Helvetica, sans-serif; font-size: 100%; color: crimson">
+                EDITAR VISITA
+        </p>
     <form action="modificarVisita" method="POST">
         {% csrf_token %}
-        <input type="text" name="idVisita" value="{{reg.idVisita}}"><br>
-        <input type="text" name="nombre" value="{{reg.nombre}}"><br>
-        <input type="text" name="fecha" value="{{reg.fecha}}"> <br>
-        <input type="text" name="telefono" value="{{reg.telefono}}"> <br>
-        <input type="text" name="direccion" value="{{reg.direccion}}"> <br>
-        <input type="submit" value="Enviar">
+        <label for="nombre" >ID:</label>
+        <input class="aparte" type="text" name="idVisita" value="{{reg.idVisita}}" readonly="readonly"><br>
+        <label for="nombre" >NOMBRE:</label>
+        <input type="text" name="nombre" value="{{reg.nombre}}" required><br>
+        <label for="fecha" >FECHA:</label>
+        <input type="date" name="fecha" value="{{reg.fecha}}" required> <br>
+        <label for="tel" >TELEFONO:</label>
+        <input type="text" name="telefono" value="{{reg.telefono}}" required> <br>
+        <label for="direccion" >DIRECCION:</label>
+        <input type="text" name="direccion" value="{{reg.direccion}}" required> <br><br>
+        <input class="boton" type="submit" value="Enviar">
     </form>
 </body>
 </html>

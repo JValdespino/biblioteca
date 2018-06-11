@@ -19,6 +19,9 @@
 
 </head>
 <body>
+        <p style="font-family: Arial, Helvetica, sans-serif; font-size: 200%; color: crimson">
+                CONSULTA DE VISITAS
+        </p>
         <table id="tablaVisita">
                 <thead>
                     <th>ID Visita</th>
@@ -57,5 +60,9 @@
         
                 </tfoot>
             </table>
+        <form action="regVisita" method="POST">
+                {% csrf_token %}
+            <button id="re">Regresar</button>
+        </form>
 </body>
 </html>

@@ -1,5 +1,6 @@
 html, body{
     background-color: aquamarine;
+    text-align-last: center;
 }
 
 button.editar{
@@ -18,6 +19,24 @@ button.editar:hover{
     background: rgba(25, 201, 255, 0.199);
     color: #000000;
     box-shadow: inset 0 0 0 2px #1ba7ec;
+}
+
+button#re{
+    border: none;
+        background: #0004ff93;
+        color: #f2f2f2;
+        padding: 12px;
+        font-size: 20px;
+        border-radius: 10px;
+        position: relative;
+        box-sizing: border-box;
+        transition: all 1200ms ease;
+}
+
+button#re:hover{
+    background: rgba(110, 110, 110, 0.377);
+    color: #000ba1;
+    box-shadow: inset 0 0 0 2px #043effb4;
 }
 
 button.eliminar{
@@ -39,6 +58,7 @@ button.eliminar:hover{
 }
 
 table {
+    font-size: 19PX;
     width: 100%;
     text-align: left;
     border-collapse: collapse;

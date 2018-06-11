@@ -20,6 +20,28 @@ def prestamos(request):
     lista = models.lector.objects.all()
     return render(request, 'Prestamos.html', {'lista': lista})
 
+def editaVisita(request):
+    if 'idVisita' in request.POST:
+        registro = models.visita.objects.get(idVisita=request.POST['idVisita'])
+        return render(request, 'modificacionVisita.html',{"reg":registro})
+
+def modificaVisita(request):
+    if  'idVisita' in request.POST and 'nombre' in request.POST and 'fecha' in request.POST and 'telefono' in request.POST and 'direccion' in request.POST:
+        idVisita = request.POST['idVisita']
+        nombre = request.POST['nombre']
+        fecha = request.POST['fecha']
+        telefono = request.POST['telefono']
+        direccion = request.POST['direccion']
+        p = models.visita(idVisita = idVisita,nombre = nombre,fecha = fecha, telefono = telefono, direccion = direccion)
+        p.save()
+        return redirect ('/menu/visita/consulta',{'msg': 'Registro realizado exitosamente'})
+    else:
+        return render(request, 'visita.html', {'msg': 'No se puede realizar el registro'})
+
+def consultaVisita(request):
+    registro = models.visita.objects.all()
+    return render(request,'consultaVisita.html',{"registro":registro})
+
 def guardaVisita(request):
     if 'nombre' in request.POST and 'fecha' in request.POST and 'telefono' in request.POST and 'direccion' in request.POST:
         nombre = request.POST['nombre']
@@ -32,10 +54,6 @@ def guardaVisita(request):
         return render (request,'visita.html',{'msg': 'Registro realizado exitosamente'})
     else:
         return render(request, 'visita.html', {'msg': 'No se puede realizar el registro'})
-
-def consultaVisita(request):
-    registro = models.visita.objects.all()
-    return render(request,'consultaVisita.html',{"registro":registro})
 
 def guardarlector(request):
     if 'Nombre' in request.POST and 'Edad' in request.POST and 'Domicilio' in request.POST and 'Cp' in request.POST and 'Telefono' in request.POST and 'Ocupacion' in request.POST and 'Esc_o_trab' in request.POST and 'Tel_esc' in request.POST and 'Dir_esc' in request.POST:
@@ -86,3 +104,9 @@ def guardarprestamos(request):
         return render (request, 'Prestamos.html',{'msg':'Registro realizado exitosamente'})
     else:
         return render(request,'Prestamos.html',{'msg':'Registro realizado exitosamente'})
+
+def regresaMenu(request):
+    return redirect('/menu')
+
+def regVisita(request):
+    return redirect('/menu/visita')
