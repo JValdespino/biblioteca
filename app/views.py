@@ -10,6 +10,9 @@ from . import models
 def index(request):
     return render(request, 'index.html')
 
+def libro(request):
+    return render(request, 'ag_lib.html')
+
 def visita(request):
     return render(request, 'visita.html')
 
