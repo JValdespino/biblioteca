@@ -113,3 +113,16 @@ def regresaMenu(request):
 
 def regVisita(request):
     return redirect('/menu/visita')
+
+def consultalector(request):
+    registro = models.lector.objects.all()
+    return render(request,'consultalector.html',{"registro":registro})
+
+def eliminar(request):
+    if 'Idl' in request.POST:
+        per=models.lector.objects.get(Idl=request.POST['Idl'])
+        per.delete()
+    return redirect('/menu/lector/consulta')
+    
+def regLector(request):
+    return redirect('/menu/lector')

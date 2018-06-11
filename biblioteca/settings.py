@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'biblioteca.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bibliotecaweb',
+        'NAME': 'biblioteca1',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': '15070017'
+        'PASSWORD': '1234'
     }
 }
 
