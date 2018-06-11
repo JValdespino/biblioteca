@@ -21,7 +21,8 @@ def lector(request):
 
 def prestamos(request):
     lista = models.lector.objects.all()
-    return render(request, 'Prestamos.html', {'lista': lista})
+    lista1 = models.libros.objects.all()
+    return render(request, 'Prestamos.html', {'lista': lista,'lista1':lista1})
 
 def guardaVisita(request):
     if 'nombre' in request.POST and 'fecha' in request.POST and 'telefono' in request.POST and 'direccion' in request.POST:
@@ -81,11 +82,18 @@ def elimi(request):
 
 
 def guardarprestamos(request):
-    if 'fecha' in request.POST and 'Fvencida' in request.POST:
-        fecha=request.POST['Fecha']
+    if 'idPrestamos' in request.POST and'isbn' in request.POST and 'Idl' in request.POST and 'fecha' in request.POST and 'Fvencida' in request.POST:
+        idPrestamos=request.POST['idPrestamos']
+        isbn=request.POST['isbn']
+        Idl=request.POST['Idl']
+        fecha=request.POST['fecha']
         Fvencida=request.POST['Fvencida']
-        p=models.prestamos(Fecha=Fecha,fechaVencida=Fvencida)
+        p=models.prestamo(idPrestamos=idPrestamos,isbn=isbn,Idl=Idl,fecha=fecha,fechaVencida=Fvencida)
         p.save()
         return render (request, 'Prestamos.html',{'msg':'Registro realizado exitosamente'})
     else:
         return render(request,'Prestamos.html',{'msg':'Registro realizado exitosamente'})
+
+def consultaPrestamos(request):
+    registro = models.prestamo.objects.all()
+    return render(request,'consultaPrestamos.html',{"registro":registro})
