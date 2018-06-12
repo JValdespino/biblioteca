@@ -13,6 +13,33 @@ def index(request):
 def libro(request):
     return render(request, 'ag_lib.html')
 
+def libroEdita(request):
+    if 'isbn' in request.POST:
+        registro = models.libros.objects.get(isbn=request.POST['isbn'])
+        return render(request, 'modificacionLibro.html',{"reg":registro})
+
+def modificaLibro(request):
+    if 'isbn' in request.POST and 'titulo' in request.POST and 'autor' in request.POST and 'editorial' in request.POST and 'edicion' in request.POST and 'fimp' in request.POST and 'tipo' in request.POST:
+        isbn = request.POST['isbn']
+        titulo = request.POST['titulo']
+        autor = request.POST['autor']
+        editorial = request.POST['editorial']
+        edicion = request.POST['edicion']
+        fimp = request.POST['fimp']
+        tipo = request.POST['tipo']
+
+        p = models.libros(isbn = isbn, titulo = titulo, autor = autor,editorial = editorial,edicion = edicion,fimp = fimp,tipo = tipo)
+        p.save()
+        return redirect ('/menu/libro/consulta',{'msg': 'Registro realizado exitosamente'})
+    else:
+        return render(request, 'ag_lib.html', {'msg': 'No se puede realizar el registro'})
+
+def eliminaLibro(request):
+    if 'isbn' in request.POST:
+        eli = models.libros.objects.get(isbn=request.POST['isbn'])
+        eli.delete()
+    return redirect('/menu/libro/consulta')
+
 def visita(request):
     return render(request, 'visita.html')
 
@@ -74,6 +101,10 @@ def guardarlector(request):
         return render (request,'lector.html',{'msg': 'Registro realizado exitosamente'})
     else:
         return render(request, 'lector.html', {'msg': 'No se puede realizar el registro'})
+
+def libroConsulta(request):
+    registro = models.libros.objects.all()
+    return render(request,'consultaLibro.html',{"registro":registro})
 
 def guardaLibro(request):
     if 'isbn' in request.POST and 'titulo' in request.POST and 'autor' in request.POST and 'editorial' in request.POST and 'edicion' in request.POST and 'fimp' in request.POST and 'tipo' in request.POST:
