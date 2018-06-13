@@ -157,3 +157,26 @@ def eliminar(request):
     
 def regLector(request):
     return redirect('/menu/lector')
+
+def modificarLector(request):
+    if  'Idl' in request.POST and 'Nombre' in request.POST and 'Edad' in request.POST and 'Domicilio' in request.POST and 'Cp' in request.POST and 'Telefono' in request.POST and 'Ocupacion' in request.POST and 'Esc_o_trab' in request.POST and 'Tel_esc' in request.POST and 'Dir_esc' in request.POST:
+        idVisita = request.POST['Idl']
+         Nombre = request.POST['Nombre']
+        Edad = request.POST['Edad']
+        Domicilio = request.POST['Domicilio']
+        Cp = request.POST['Cp']
+        Telefono = request.POST['Telefono']
+        Ocupacion = request.POST['Ocupacion']
+        Esc_o_trab = request.POST['Esc_o_trab']
+        Tel_esc = request.POST['Tel_esc']
+        Dir_esc = request.POST['Dir_esc']
+        p = models.lector(Idl = Idl, Nombre = Nombre,Edad = Edad, Domicilio = Domicilio, Cp = Cp, Telefono = Telefono, Ocupacion= Ocupacion, Esc_o_trab = Esc_o_trab, Tel_esc = Tel_esc, Dir_esc = Dir_esc)
+        p.save()
+        return redirect ('/menu/lector/consulta',{'msg': 'Registro realizado exitosamente'})
+    else:
+        return render(request, 'lector.html', {'msg': 'No se puede realizar el registro'})
+def editarlec(request):
+    if 'Idl' in request.POST:
+        registro = models.lector.objects.get(Idl=request.POST['Idl'])
+        return render(request, 'modificacionLector.html',{"reg":registro})
+
