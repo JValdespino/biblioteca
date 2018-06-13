@@ -35,8 +35,8 @@ class lector(models.Model):
 
 class prestamo(models.Model):
     idPrestamos = models.AutoField(primary_key=True)
-    isbn = models.CharField(max_length=30)    #Este era un foreignKey
-    Idl = models.IntegerField()                #Este era un foreignKey
+    isbn_id = models.CharField(max_length=30)    #Este era un foreignKey
+    Idl_id = models.IntegerField()                #Este era un foreignKey
     fecha = models.DateField()
     fvencida = models.DateField()
 

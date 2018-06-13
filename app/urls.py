@@ -13,9 +13,15 @@ urlpatterns = [
     path('libro',views.libro),
     path('guardarlector',views.guardarlector),
     path('lector',views.lector),
-    path('consultaInt', views.consultas_int),
-    path('prestamos',views.prestamos),
+   # path('consultaInt', views.consultas_int),
+
+   
+    path('prestamos/consulta', views.consultaPrestamos),
     path('guardarprestamos',views.guardarprestamos),
+    path('prestamos',views.prestamos),
+    
+
+
     path('guardarlector',views.guardarlector),
     path('lector',views.lector),
     path('visita/consulta', views.consultaVisita),

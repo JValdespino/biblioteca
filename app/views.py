@@ -82,17 +82,18 @@ def elimi(request):
 
 
 def guardarprestamos(request):
-    if 'idPrestamos' in request.POST and'isbn' in request.POST and 'Idl' in request.POST and 'fecha' in request.POST and 'Fvencida' in request.POST:
+    print ("Entro a guardar")
+    if 'idPrestamos' in request.POST and 'Isbn' in request.POST and 'Idl' in request.POST and 'fecha' in request.POST and 'Fvencida' in request.POST:
         idPrestamos=request.POST['idPrestamos']
-        isbn=request.POST['isbn']
+        isbn=request.POST['Isbn']
         Idl=request.POST['Idl']
         fecha=request.POST['fecha']
         Fvencida=request.POST['Fvencida']
-        p=models.prestamo(idPrestamos=idPrestamos,isbn=isbn,Idl=Idl,fecha=fecha,fechaVencida=Fvencida)
+        p=models.prestamo(idPrestamos=idPrestamos,isbn_id=isbn,Idl_id=Idl,fecha=fecha,fvencida=Fvencida)
         p.save()
-        return render (request, 'Prestamos.html',{'msg':'Registro realizado exitosamente'})
+        return render(request, 'Prestamos.html',{'msg':'Registro realizado exitosamente'})
     else:
-        return render(request,'Prestamos.html',{'msg':'Registro realizado exitosamente'})
+        return render(request,'Prestamos.html',{'msg':'Registro no se realizo'})
 
 def consultaPrestamos(request):
     registro = models.prestamo.objects.all()

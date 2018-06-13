@@ -5,8 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Consulta Prestamos</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/estilolec.css' %}">
 </head>
 <body>
+    <table id="tablaPrestamos">
+        <thead>
+            <th>ID Prestamos</th>
+            <th>Libros</th>
+            <th>Lector</th>
+            <th>Fecha</th>
+            <th>Fecha Vencida</th>
+            <th colspan="2">Operaciones</th>
+        </thead>
+        <tbody>
+            {% for fila in registro %}
+            <tr>
+                <td>{{fila.idPrestamos}}</td>
+                <td>{{fila.Isbn_id}}</td>
+                <td>{{fila.Idl_id}}</td>
+                <td>{{fila.fecha}}</td>
+                <td>{{fila.fvencida}}</td>
+                <td>
+                    <form action="editarPrest" method="POST">
+                        {% csrf_token %}
+                        <input name="Idl" value="{{fila.idPrestamos}}" type="hidden">
+                        <button class="editarPrest">Editar</button>
+                    </form>
+                </td>
+                <td>
+                    <form id="{{fila.idPrestamos}}" action="eliminarPrest" method="POST">
+                        {% csrf_token %}
+                        <input name="Idl" value="{{fila.idPrest}}" type="hidden">
+                        <button type="button" onclick="eliminarPrest('{{fila.idPrest}}','{{fila.Isbn_id}}','{{fila.Idl_id}}','{{fila.fecha}}','{{fila.Fvencida}}')" class="eliminarPrest">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
 
+        </tfoot>
+    </table>
 </body>
 </html>
