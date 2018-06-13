@@ -4,6 +4,7 @@ from . import views
 
 
 urlpatterns = [
+    path('libro/regLibro', views.regLibro),
     path('libro/elimina', views.eliminaLibro),
     path('libro/modificarLibro', views.modificaLibro),
     path('libro/edita', views.libroEdita),
