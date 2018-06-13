@@ -6,14 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Consulta Prestamos</title>
     {% load static from staticfiles %}
-    <link rel="stylesheet" href="{% static 'css/estilolec.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estiloPrestamo.css' %}">
+    <script>
+        function eliminarP(id,nom,isbn,idl,fe,fv){
+            var res = confirm('Confirma eliminar a '+nom+','+isbn+','+idl+','+fe+','+fv+' con el ID '+id);
+            if(res){
+                var formulario = document.getElementById(id);
+                formulario.submit();
+            }
+        }
+    </script>
 </head>
 <body>
     <table id="tablaPrestamos">
         <thead>
-            <th>ID Prestamos</th>
-            <th>Libros</th>
-            <th>Lector</th>
+            <th>IDPrestamos</th>
+            <th>IDLibros</th>
+            <th>IDLector</th>
             <th>Fecha</th>
             <th>Fecha Vencida</th>
             <th colspan="2">Operaciones</th>
@@ -27,17 +36,17 @@
                 <td>{{fila.fecha}}</td>
                 <td>{{fila.fvencida}}</td>
                 <td>
-                    <form action="editarPrest" method="POST">
+                    <form action="editarP" method="POST">
                         {% csrf_token %}
                         <input name="Idl" value="{{fila.idPrestamos}}" type="hidden">
-                        <button class="editarPrest">Editar</button>
+                        <button class="editarP">Editar</button>
                     </form>
                 </td>
                 <td>
-                    <form id="{{fila.idPrestamos}}" action="eliminarPrest" method="POST">
+                    <form id="{{fila.idPrestamos}}" action="eliminarP" method="POST">
                         {% csrf_token %}
-                        <input name="Idl" value="{{fila.idPrest}}" type="hidden">
-                        <button type="button" onclick="eliminarPrest('{{fila.idPrest}}','{{fila.Isbn_id}}','{{fila.Idl_id}}','{{fila.fecha}}','{{fila.Fvencida}}')" class="eliminarPrest">Eliminar</button>
+                        <input name="iPrestamos" value="{{fila.idPrestamos}}" type="hidden">
+                        <button type="button" onclick="eliminarP('{{fila.idPrestamos}}','{{fila.isbn_id}}','{{fila.Idl_id}}','{{fila.fecha}}','{{fila.fvencida}}')" class="eliminarP">Eliminar</button>
                     </form>
                 </td>
             </tr>

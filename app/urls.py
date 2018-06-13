@@ -16,9 +16,11 @@ urlpatterns = [
    # path('consultaInt', views.consultas_int),
 
    
+   
     path('prestamos/consulta', views.consultaPrestamos),
     path('guardarprestamos',views.guardarprestamos),
     path('prestamos',views.prestamos),
+    path('prestamos/eliminarP', views.eliminarP),
     
 
 

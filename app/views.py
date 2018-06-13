@@ -98,3 +98,9 @@ def guardarprestamos(request):
 def consultaPrestamos(request):
     registro = models.prestamo.objects.all()
     return render(request,'consultaPrestamos.html',{"registro":registro})
+
+def eliminarP(request):
+    if 'idPrestamos' in request.POST:
+        per = models.prestamo.objects.get(idPrestamos=request.POST['idPrestamos'])
+        per.delete()
+    return redirect('/menu/prestamos/consulta')
