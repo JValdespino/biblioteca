@@ -1,32 +1,40 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
+        <link rel="stylesheet" href="{% static 'css/visita.css' %}">
 <head>
     <meta charset="UTF-8">
     <title>Visita</title>
-    {% load static from staticfiles %}
-    <link rel="stylesheet" href="{% static 'css/estiloVista.css' %}">
+    
 </head>
 <body>
+    <p style="font-family: Arial, Helvetica, sans-serif; font-size: 100%; color: crimson">
+        REALIZAR REGISTROS DE VISITAS
+    </p>
 
     <form action="guardaVisita" method="POST">
         {% csrf_token %}
-        <label for="nombre" >NOMBRE :</label>
+        <label for="nombre" >NOMBRE:</label>
         <input type="text" name="nombre" maxlength="80" required>
         <br>
-        <label for="fecha" >FECHA :</label>
-        <input type="date" name="fecha" required>
+        <label for="fecha" >FECHA:</label>
+        <input type="date" name="fecha" required >
         <br>
-        <label for="tel" >TELEFONO :</label>
+        <label for="tel" >TELEFONO:</label>
         <input type="text" name="telefono" required pattern="[0-9]{10}$">
         <br>
-        <label for="direccion" >DIRECCION :</label>
+        <label for="direccion" >DIRECCION:</label>
         <input type="text" name="direccion" maxlength="100" required>
         <br> <br>
-            <button class="guarda">Guardar</button>     
+            <button class="guarda" onclick="mensa()">Guardar</button>  
     </form>
     <form action="visita/consulta" method="POST">
             {% csrf_token %}
             <button class="consulta">Consultar</button>
+    </form>
+    <form action="regMenu" method="POST">
+            {% csrf_token %}
+        <button id="re">Regresar</button>
     </form>
 
 </body>

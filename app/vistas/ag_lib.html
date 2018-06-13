@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Agreagar libro</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/estiloVista.css' %}">
 </head>
 <body>
 
-    <form action="" method="POST">
-        {% csrf_token %}
+    <h1 style="font-family: 'Courier New', Courier, monospace; color: darkcyan">Registra un libro:</h1>
+
+    <form action="guardaLibro" method="POST">
+
+    {% csrf_token %}
     <label for="isbn">ISBN:</label>
     <input type="text" name="isbn" maxlength="30" required>
     <br>
@@ -24,14 +29,28 @@
     <input type="text" name="edicion" maxlength="45" required>
     <br>
     <label for="fimp">Fecha de impresion:</label>
-    <input type="date" name="fimp">
+    <input type="date" name="fimp" required>
     <br>
     <label for="tipo">Tipo:</label>
     <input type="text" name="tipo" maxlength="50" required>
     <br>
-    <button>Guardar</button>
+    <button class="guarda">Guardar</button>
+    <br>
 
-    </form>
+</form>
+
+    <form action="libro/consulta" method="POST">
+        {% csrf_token %}
+        <button class="consulta">Consultar</button>
+</form>
+<form action="regMenu" method="POST">
+        {% csrf_token %}
+    <button id="re">Regresar</button>
+</form>
+
+
+   
+
 
 </body>
 </html>

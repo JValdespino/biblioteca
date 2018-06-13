@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultas de Consultas Internas</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/estiloCVisita.css' %}">
+</head>
+<body>
+    <thead>
+        <th>Id Consulta</th>
+        <th>ISBN Libro</th>
+        <th>Nombre Lector</th>
+        <th>Ap. Paterno</th>
+        <th>Ap. Materno</th>
+        <th>Edad</th>
+        <th>Telefono</th>
+        <th>Direccion</th>
+        <th>Escuela de procedencia</th>
+
+        <th colspan="2">Operaciones</th>
+    </thead>
+    <br>
+    <tbody>
+        {% for fila in registro %}
+        <tr>
+            <td>{{fila.idCon}}</td>
+            <td>{{fila.isbn}}</td>
+            <td>{{fila.NombreLe}} </td>
+            <td>{{fila.Ap}} </td>
+            <td>{{fila.Am}} </td>
+            <td>{{fila.Edad}} </td>
+            <td>{{fila.Tel}} </td>
+            <td>{{fila.Dir}} </td>
+            <td>{{fila.EscP}} </td>
+            
+
+            <td> <form action="ediConsul" method="POST">  
+                {% csrf_token %}
+                <input name="NombreLe" value="{{fila.NombreLe}}" type="hidden">
+                <input name="Ap" value="{{fila.Ap}}" type="hidden">
+                <input name="Am" value="{{fila.Am}}" type="hidden">
+                <input name="Edad" value="{{fila.Edad}}" type="hidden">
+                <input name="Tel" value="{{fila.Tel}}" type="hidden">
+                <input name="Dir" value="{{fila.Dir}}" type="hidden">
+                <input name="EscP" value="{{fila.EscP}}" type="hidden">
+                <button class="ediConsul">Editar</button>
+            </form> </td>
+
+            <td>
+                <form action="elimiConsul" method="POST">
+                    {% csrf_token%}
+                    <input type="hidden" value="{{fila.idCon}}" name="idcon">
+                    <button class="elimiConsul">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+
+    <hr>
+    <h2>{{op}}</h2>
+    
+</body>
+</html>

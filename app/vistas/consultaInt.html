@@ -7,19 +7,23 @@
     <link rel="stylesheet" href="{% static 'css/estiloVista.css' %}">
 </head>
 <body>
-    <form action="guardarconInt" method="POST">
+    <form action="guardarconsulta" method="POST">
         {% csrf_token %}
-        <label for="idCon">ID Consulta: </label>
-        <input type="text" name="idCon" maxlength="15" required>
-        <br>
+        
+
+
         <label for="isbn">ISBN del Libro: </label>
-        <input type="text" name="isbn" maxlength="15" required>
+        <select name="isbn">
+            {% for xx in lista1 %}
+            <option value="{{xx.isbn}}">{{xx.isbn}}</option>
+            {%endfor%}
+        </select>
         <br>
         <label for="NombreLe">Nombre del Lector: </label>
         <input type="text" name="NombreLe" maxlength="30" required>
         <br>
         <label for="Ap">Apellido Paterno: </label>
-        <input type="text" name="Ape" maxlength="30" required>
+        <input type="text" name="Ap" maxlength="30" required>
         <br>
         <label for="Am">Apellido Materno: </label>
         <input type="text" name="Am" maxlength="30" required>
@@ -34,10 +38,9 @@
         <input type="text" name="Dir" maxlength="50" required>
         <br>
         <label for="EscP">Escuela de Procedencia: </label>
-        <input type="text" name="Am" maxlength="50" required>
+        <input type="text" name="EscP" maxlength="50" required>
         <br>
         <button>Guardar consulta</button>
-        <h1>{{msg}}</h1>
     </form>
 </body>
 </html>

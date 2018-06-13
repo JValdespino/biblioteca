@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <title>Consulta Visita</title>
     {% load static from staticfiles %}
-    <link rel="stylesheet" href="{% static 'css/estiloCVisita.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estiloVisita.css' %}">
+
+    <script>
+        function eliminar(id,nom){
+            var res = confirm('Confirma eliminar a '+nom+' con el ID '+id);
+            if(res){
+                var formulario = document.getElementById(id);
+                formulario.submit();
+            }
+        }
+    </script>
+
+
 </head>
 <body>
+        <p style="font-family: Arial, Helvetica, sans-serif; font-size: 200%; color: crimson">
+                CONSULTA DE VISITAS
+        </p>
         <table id="tablaVisita">
                 <thead>
                     <th>ID Visita</th>
@@ -25,14 +40,14 @@
                         <td>{{fila.telefono}}</td>
                         <td>{{fila.direccion}}</td>
                         <td>
-                            <form action="editar" method="POST">
+                            <form action="editarV" method="POST">
                                 {% csrf_token %}
                                 <input name="idVisita" value="{{fila.idVisita}}" type="hidden">
                                 <button class="editar">Editar</button>
                             </form>
                         </td>
                         <td>
-                            <form id="{{fila.idVisita}}" action="eliminar" method="POST">
+                            <form id="{{fila.idVisita}}" action="elimi" method="POST">
                                 {% csrf_token %}
                                 <input name="idVisita" value="{{fila.idVisita}}" type="hidden">
                                 <button type="button" onclick="eliminar('{{fila.idVisita}}','{{fila.nombre}}')" class="eliminar">Eliminar</button>
@@ -45,5 +60,9 @@
         
                 </tfoot>
             </table>
+        <form action="regVisita" method="POST">
+                {% csrf_token %}
+            <button id="re">Regresar</button>
+        </form>
 </body>
 </html>

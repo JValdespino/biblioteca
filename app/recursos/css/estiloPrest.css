@@ -28,7 +28,7 @@ input:hover{
     padding-top: 17px;
 }
 
-button.consulta{
+button.consultaP{
     border: none;
     background: #bb3232;
     color: #f2f2f2;
@@ -40,13 +40,13 @@ button.consulta{
     transition: all 1200ms ease;
 }
 
-button.consulta:hover{
+button.consultaP:hover{
     background: rgba(255, 0, 0, 0.274);
     color: #680909;
     box-shadow: inset 0 0 0 2px #ff000086;
 }
 
-button.guarda{
+button.guardarP{
         border: none;
         background: #3a7999;
         color: #f2f2f2;
@@ -58,8 +58,9 @@ button.guarda{
         transition: all 1200ms ease;
 }
 
-button.guarda:hover{
+button.guardarP:hover{
     background: rgba(25, 201, 255, 0.199);
     color: #3a7999;
     box-shadow: inset 0 0 0 2px #1ba7ec;
 }
+

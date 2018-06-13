@@ -11,8 +11,9 @@ class libros(models.Model):
     tipo = models.CharField(max_length=50)
 
 class consultaInt(models.Model):
-    idCon=models.IntegerField(primary_key=True)
-    isbn=models.ForeignKey(libros,on_delete=models.CASCADE)
+    idCon=models.AutoField(primary_key=True, auto_created=True)
+    #Esta es foreign key    
+    isbn=models.CharField(max_length=30)
     NombreLe=models.CharField(max_length=50)
     Ap=models.CharField(max_length=50)
     Am=models.CharField(max_length=50)
@@ -34,9 +35,9 @@ class lector(models.Model):
     Dir_esc = models.CharField(max_length=100)
 
 class prestamo(models.Model):
-    idPrestamos = models.IntegerField(primary_key=True)
-    isbn = models.ForeignKey(libros,on_delete=models.CASCADE)
-    Idl = models.ForeignKey(lector,on_delete=models.CASCADE)
+    idPrestamos = models.AutoField(primary_key=True)
+    isbn_id = models.CharField(max_length=30)    #Este era un foreignKey
+    Idl_id = models.IntegerField()                #Este era un foreignKey
     fecha = models.DateField()
     fvencida = models.DateField()
 

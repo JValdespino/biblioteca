@@ -2,7 +2,7 @@ html, body{
     background-color: aquamarine;
 }
 
-button.editar{
+button.editarP{
     border: none;
     background: #2b4bff;
     color: #f2f2f2;
@@ -14,13 +14,13 @@ button.editar{
     transition: all 1200ms ease;
 }
 
-button.editar:hover{
+button.editarP:hover{
     background: rgba(25, 201, 255, 0.199);
     color: #000000;
     box-shadow: inset 0 0 0 2px #1ba7ec;
 }
 
-button.eliminar{
+button.eliminarP{
     border: none;
     background: #bb3232;
     color: #f2f2f2;
@@ -32,7 +32,7 @@ button.eliminar{
     transition: all 1200ms ease;
 }
 
-button.eliminar:hover{
+button.eliminarP:hover{
     background: rgba(255, 0, 0, 0.274);
     color: #000000;
     box-shadow: inset 0 0 0 2px #ff000086;
