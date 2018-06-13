@@ -205,7 +205,7 @@ def ediConsul(request):
     if 'idCon' in request.POST:
         p=models.consultaInt(idCon=request.POST['idCon'])
         isbn=request.POST['isbn']
-        NombreLe=request.POST['NombreLe']
+         NombreLe=request.POST['NombreLe']
         Ap=request.POST['Ap']
         Am=request.POST['Am']
         Edad=request.POST['Edad']

@@ -81,8 +81,16 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
+<<<<<<< HEAD
         'PASSWORD': '123456'
 
+=======
+<<<<<<< HEAD
+        'PASSWORD': 'root'
+=======
+        'PASSWORD': 'lenovopc'
+>>>>>>> 41debf957e1e29fb5708260aca153273569df044
+>>>>>>> c270b6ee50adb16959b1611d24054b8258c297ae
     }
 }
 
