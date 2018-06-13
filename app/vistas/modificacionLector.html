@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modificar Datos Lector</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/estiloVisita.css' %}">
+</head>
+<body>
+
+        <p style="font-family: Arial, Helvetica, sans-serif; font-size: 100%; color: crimson">
+                EDITAR LECTOR
+        </p>
+
+        <form action="modificarLector" method="POST">
+
+                {% csrf_token %}
+                <label for="Idl">IdLector:</label>
+                <input type="text" name="Idl" maxlength="30" value="{{reg.Idl}}" readonly>
+                <br>
+                <label for="Nombre">Nombre:</label>
+                <input type="text" name="Nombre" maxlength="50" value="{{reg.Nombre}}" required>
+                <br>
+                <label for="Edad">Edad:</label>
+                <input type="text" name="Edad" maxlength="50" value="{{reg.Edad}}" required>
+                <br>
+                <label for="Domicilio">Domicilio:</label>
+                <input type="text" name="Domicilio" maxlength="50" value="{{reg.Domicilio}}" required>
+                <br>
+                <label for="Cp">Cp:</label>
+                <input type="text" name="Cp" maxlength="45" value="{{reg.Cp}}" required>
+                <br>
+                <label for="Telefono">Teléfono:</label>
+                <input type="date" name="Telefono" value="{{reg.Telefono}}" required>
+                <br>
+                <label for="Ocupacion">Ocupación:</label>
+                <input type="text" name="Ocupacion" maxlength="50" value="{{reg.Ocupacion}}" required>
+                <br>
+                <label for="Esc_o_trab">Escuela o Trabajo:</label>
+                <input type="text" name="Esc_o_trab" maxlength="50" value="{{reg.Esc_o_trab}}" required>
+                <br>
+                <label for="Tel_esc">Teléfono escuela:</label>
+                <input type="text" name="Tel_esc" maxlength="50" value="{{reg.Tel_esc}}" required>
+                <br>
+                <label for="Dir_esc">Dirección escuela:</label>
+                <input type="text" name="Dir_esc" maxlength="50" value="{{reg.Dir_esc}}" required>
+                <br>
+                <button class="guarda">Guardar</button>
+                <br>
+            
+            </form>
+    
+</body>
+</html>

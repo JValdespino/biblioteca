@@ -5,6 +5,15 @@
     <title>Consulta Lector</title>
     {% load static from staticfiles %}
     <link rel="stylesheet" href="{% static 'css/estiloCVisita.css' %}">
+    <script>
+        function eliminar(Idl,Nombre){
+            var res= confirm('Confirma eliminar a '+Nombre+' con el id '+Idl);
+            if(res){
+                var formulario=document.getElementById(Idl);
+                formulario.submit();
+            }
+        }
+    </script>
 </head>
 <body>
         <table id="tablaLector">
@@ -41,10 +50,10 @@
                             </form>
                         </td>
                         <td>
-                            <form id="{{fila.Idl}}" action="eliminarlec" method="POST">
+                            <form id="{{fila.Idl}}" action="eliminar" method="POST">
                                 {% csrf_token %}
                                 <input name="Idl" value="{{fila.Idl}}" type="hidden">
-                                <button type="button" onclick="eliminarlec('{{fila.Idl}}','{{fila.Nombre}}')" class="eliminarlec">Eliminar</button>
+                                <button type="button" onclick="eliminar('{{fila.Idl}}','{{fila.Nombre}}')" class="eliminar">Eliminar</button>
                             </form>
                         </td>
                     </tr>
@@ -54,5 +63,9 @@
         
                 </tfoot>
             </table>
+        <form action="regVisita" method="POST">
+            {% csrf_token %}
+            <button id="re">Regresar</button>
+        </form>
 </body>
 </html>

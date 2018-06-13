@@ -2,55 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Consulta Visita</title>
+    <title>Libros</title>
     {% load static from staticfiles %}
     <link rel="stylesheet" href="{% static 'css/estiloCVisitas.css' %}">
 
     <script>
         function eliminar(id,nom){
-            var res = confirm('Confirma eliminar a '+nom+' con el ID '+id);
+            var res = confirm('Confirma eliminar a '+nom+' con el ISBN '+id);
             if(res){
                 var formulario = document.getElementById(id);
                 formulario.submit();
             }
         }
     </script>
-
-
 </head>
 <body>
+
         <p style="font-family: Arial, Helvetica, sans-serif; font-size: 200%; color: crimson">
-                CONSULTA DE VISITAS
+                Libros Registrados
         </p>
-        <table id="tablaVisita">
+        <table id="tablaLibro">
                 <thead>
-                    <th>ID Visita</th>
-                    <th>Nombre</th>
-                    <th>Fecha</th>
-                    <th>Telefono</th>
-                    <th>Direccion</th>
+                    <th>ISBN</th>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Editorial</th>
+                    <th>Edicion</th>
+                    <th>Fecha de Impresion</th>
+                    <th>Tipo</th>
                     <th colspan="2">Operaciones</th>
                 </thead>
                 <tbody>
                     {% for fila in registro %}
                     <tr>
-                        <td>{{fila.idVisita}}</td>
-                        <td>{{fila.nombre}}</td>
-                        <td>{{fila.fecha}}</td>
-                        <td>{{fila.telefono}}</td>
-                        <td>{{fila.direccion}}</td>
+                        <td>{{fila.isbn}}</td>
+                        <td>{{fila.titulo}}</td>
+                        <td>{{fila.autor}}</td>
+                        <td>{{fila.editorial}}</td>
+                        <td>{{fila.edicion}}</td>
+                        <td>{{fila.fimp}}</td>
+                        <td>{{fila.tipo}}</td>
                         <td>
-                            <form action="editarV" method="POST">
+                            <form action="edita" method="POST">
                                 {% csrf_token %}
-                                <input name="idVisita" value="{{fila.idVisita}}" type="hidden">
+                                <input name="isbn" value="{{fila.isbn}}" type="hidden">
                                 <button class="editar">Editar</button>
                             </form>
                         </td>
                         <td>
-                            <form id="{{fila.idVisita}}" action="elimi" method="POST">
+                            <form id="{{fila.isbn}}" action="elimina" method="POST">
                                 {% csrf_token %}
-                                <input name="idVisita" value="{{fila.idVisita}}" type="hidden">
-                                <button type="button" onclick="eliminar('{{fila.idVisita}}','{{fila.nombre}}')" class="eliminar">Eliminar</button>
+                                <input name="isbn" value="{{fila.isbn}}" type="hidden">
+                                <button type="button" onclick="eliminar('{{fila.isbn}}','{{fila.titulo}}')" class="eliminar">Eliminar</button>
                             </form>
                         </td>
                     </tr>
@@ -64,5 +67,6 @@
                 {% csrf_token %}
             <button id="re">Regresar</button>
         </form>
+    
 </body>
 </html>
