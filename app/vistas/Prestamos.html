@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Prestamos</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/estiloPrest.css' %}">
 </head>
 <body>
+    {{msg}}
     <form action="guardarprestamos" method="POST">
         {% csrf_token %}
     <label for="idPrestamos">idPrestamos:</label>
@@ -14,16 +17,16 @@
     <br>
     
     <label for="Isbn_id">Libros:</label>
-    <Select name="Isbn_id">
-        {% for xx in listar %} 
+    <Select name="Isbn">
+        {% for xx in lista1 %} 
         <option value="{{xx.isbn}}">{{xx.isbn}}</option>
         {%endfor%}
     </Select>
     <br>
     
 
-    <label for="Idl_id">Lector:</label>
-    <SELECT NAME="Idl_id"> 
+    <label for="Idl">Lector:</label>
+    <SELECT name="Idl"> 
         {% for x in lista %}
         <OPTION VALUE="{{x.Idl}}">{{x.Nombre}}</OPTION>
         {%endfor%}
@@ -32,15 +35,18 @@
 
 
     <label for="fecha">Fecha</label>
-    <input type="text" name="fecha" required>
+    <input type="Date" name="fecha" required>
     <br>
     <label for="Fvencida">Fecha Vencida</label>
-    <input type="text" name="Fvencida" required>
-    <br>
-     
-    
-    <br>
-    <button>Guardar</button>
+    <input type="Date" name="Fvencida" required>
+    <br> <br>
+         <button class="guardarP">Guardar</button>
+</form>
+
+
+<form action="prestamos/consulta" method="POST">
+    {% csrf_token %}
+    <button class="consultaP">Consultar</button>
 </form>
 </body>
 </html>

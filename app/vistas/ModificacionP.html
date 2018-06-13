@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modificación</title>
+</head>
+<body>
+    {{mp}}
+    <form action="modificarP" method="POST">
+        {% csrf_token %}
+        <input type="text" name="idPrestamo" maxlength="15" required pattern="[0-9]*$" value="{{reg.idPrestamo}}"><br>
+        <input type="text" name="Isbn" value="{{reg.Isbn}}"><br>
+        <input type="text" name="Idl" value="{{reg.Idl}}"> <br>
+        <input type="text" name="fecha" value="{{reg.fecha}}"> <br>
+        <input type="text" name="Fvencida" value="{{reg.Fvencida}}"> <br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

@@ -13,6 +13,33 @@ def index(request):
 def libro(request):
     return render(request, 'ag_lib.html')
 
+def libroEdita(request):
+    if 'isbn' in request.POST:
+        registro = models.libros.objects.get(isbn=request.POST['isbn'])
+        return render(request, 'modificacionLibro.html',{"reg":registro})
+
+def modificaLibro(request):
+    if 'isbn' in request.POST and 'titulo' in request.POST and 'autor' in request.POST and 'editorial' in request.POST and 'edicion' in request.POST and 'fimp' in request.POST and 'tipo' in request.POST:
+        isbn = request.POST['isbn']
+        titulo = request.POST['titulo']
+        autor = request.POST['autor']
+        editorial = request.POST['editorial']
+        edicion = request.POST['edicion']
+        fimp = request.POST['fimp']
+        tipo = request.POST['tipo']
+
+        p = models.libros(isbn = isbn, titulo = titulo, autor = autor,editorial = editorial,edicion = edicion,fimp = fimp,tipo = tipo)
+        p.save()
+        return redirect ('/menu/libro/consulta',{'msg': 'Registro realizado exitosamente'})
+    else:
+        return render(request, 'ag_lib.html', {'msg': 'No se puede realizar el registro'})
+
+def eliminaLibro(request):
+    if 'isbn' in request.POST:
+        eli = models.libros.objects.get(isbn=request.POST['isbn'])
+        eli.delete()
+    return redirect('/menu/libro/consulta')
+
 def visita(request):
     return render(request, 'visita.html')
 
@@ -21,7 +48,8 @@ def lector(request):
 
 def prestamos(request):
     lista = models.lector.objects.all()
-    return render(request, 'Prestamos.html', {'lista': lista})
+    lista1 = models.libros.objects.all()
+    return render(request, 'Prestamos.html', {'lista': lista,'lista1':lista1})
 
 def editaVisita(request):
     if 'idVisita' in request.POST:
@@ -75,6 +103,10 @@ def guardarlector(request):
     else:
         return render(request, 'lector.html', {'msg': 'No se puede realizar el registro'})
 
+def libroConsulta(request):
+    registro = models.libros.objects.all()
+    return render(request,'consultaLibro.html',{"registro":registro})
+
 def guardaLibro(request):
     if 'isbn' in request.POST and 'titulo' in request.POST and 'autor' in request.POST and 'editorial' in request.POST and 'edicion' in request.POST and 'fimp' in request.POST and 'tipo' in request.POST:
         isbn = request.POST['isbn']
@@ -99,17 +131,44 @@ def elimi(request):
 
 
 def guardarprestamos(request):
-    if 'fecha' in request.POST and 'Fvencida' in request.POST:
-        fecha=request.POST['Fecha']
+    print ("Entro a guardar")
+    if 'idPrestamos' in request.POST and 'Isbn' in request.POST and 'Idl' in request.POST and 'fecha' in request.POST and 'Fvencida' in request.POST:
+        idPrestamos=request.POST['idPrestamos']
+        isbn=request.POST['Isbn']
+        Idl=request.POST['Idl']
+        fecha=request.POST['fecha']
         Fvencida=request.POST['Fvencida']
-        p=models.prestamos(Fecha=Fecha,fechaVencida=Fvencida)
+        p=models.prestamo(idPrestamos=idPrestamos,isbn_id=isbn,Idl_id=Idl,fecha=fecha,fvencida=Fvencida)
         p.save()
-        return render (request, 'Prestamos.html',{'msg':'Registro realizado exitosamente'})
+        return render(request, 'Prestamos.html',{'msg':'Registro realizado exitosamente'})
     else:
-        return render(request,'Prestamos.html',{'msg':'Registro realizado exitosamente'})
+        return render(request,'Prestamos.html',{'msg':'Registro no se realizo'})
 
-def regresaMenu(request):
-    return redirect('/menu')
+def consultaPrestamos(request):
+    registro = models.prestamo.objects.all()
+    return render(request,'consultaPrestamos.html',{"registro":registro})
 
-def regVisita(request):
-    return redirect('/menu/visita')
+def eliminarP(request):
+    if 'idPrestamos' in request.POST:
+        per = models.prestamo.objects.get(idPrestamos=request.POST['idPrestamos'])
+        per.delete()
+    return redirect('/menu/prestamos/consulta')
+
+def Modificacion(request):
+    if 'idPrestamos' in request.POST:
+        registro = models.prestamo.objects.get(idPrestamos=request.POST['idPrestamos'])
+        return render(request,'Modificacion.html',{"reg":registro})
+    else:
+        return redirect('consulta/')
+
+def modificarP(request):
+    if 'idPrestamos' in request.POST and 'Isbn' in request.POST and 'Idl' in request.POST and 'fecha' in request.POST and 'Fvencida' in request.POST:
+        p = models.prestamo(idPersona = request.POST['idPrestamos'])
+        p.Isbn=request.POST['Isbn']
+        p.Idl=request.POST['Idl']
+        p.fecha=request.POST['fecha']
+        p.Fvencida=request.POST['Fvencida']
+        p.save()
+    return redirect('consulta', {'mp':'Actualizacion Realizada'})
+
+

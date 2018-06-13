@@ -5,8 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Consulta Prestamos</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/estiloPrestamo.css' %}">
+    <script>
+        function eliminarP(id,isbn){
+            var res = confirm('Confirma eliminar a '+isbn+' con el ID '+id);
+            if(res){
+                var formulario = document.getElementById(id);
+                formulario.submit();
+            }
+        }
+    </script>
 </head>
 <body>
+    <table id="tablaPrestamos">
+        <thead>
+            <th>IDPrestamos</th>
+            <th>IDLibros</th>
+            <th>IDLector</th>
+            <th>Fecha</th>
+            <th>Fecha Vencida</th>
+            <th colspan="2">Operaciones</th>
+        </thead>
+        <tbody>
+            {% for fila in registro %}
+            <tr>
+                <td>{{fila.idPrestamos}}</td>
+                <td>{{fila.isbn_id}}</td>
+                <td>{{fila.Idl_id}}</td>
+                <td>{{fila.fecha}}</td>
+                <td>{{fila.fvencida}}</td>
+                <td>
+                    <form action="editarP" method="POST">
+                        {% csrf_token %}
+                        <input name="Idl" value="{{fila.idPrestamos}}" type="hidden">
+                        <button class="editarP">Editar</button>
+                    </form>
+                </td>
+                <td>
+                    <form id="{{fila.idPrestamos}}" action="eliminarP" method="POST">
+                        {% csrf_token %}
+                        <input name="idPrestamos" value="{{fila.idPrestamos}}" type="hidden">
+                        <button type="button" onclick="eliminarP('{{fila.idPrestamos}}','{{fila.isbn_id}}')" class="eliminarP">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
 
+        </tfoot>
+    </table>
 </body>
 </html>
