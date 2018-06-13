@@ -1,86 +1,22 @@
 html, body{
     background-color: aquamarine;
-    font-size: 160%;
-    text-align: center;
+    text-align-last: center;
 }
 
-label{
-    font-family: 'Courier New', Courier, monospace;
-    color: rgba(0, 0, 0, 0.61);
-    font-size: 85%;
-}
-
-input.boton{
+button.editar{
     border: none;
-    background: #bb3232;
+    background: #2b4bff;
     color: #f2f2f2;
     padding: 12px;
-    font-size: 20px;
-    border-radius: 10px;
+    font-size: 12px;
+    border-radius: 20px;
     position: relative;
     box-sizing: border-box;
     transition: all 1200ms ease;
 }
 
-input.boton:hover{
-    background: rgba(255, 0, 0, 0.274);
-    color: #000000;
-    box-shadow: inset 0 0 0 2px #ff000086;
-}
-
-input{
-  border: 2px solid rgba(255, 4, 4, 0.349);
-  font-size: 16px;
-  font-family: Arial, Verdana;
-  padding-left: 20px;
-  padding-right: 15px;
-  padding-top: 12px;
-  padding-bottom: 8px;
-  border-radius: 18px;
-}
-
-
-input:hover{
-    border: 3px solid rgba(255, 6, 6, 0.247);
-    background-color: rgba(255, 21, 21, 0.200);
-    padding-left: 20px;
-    padding-right: 16px;
-    padding-top: 11px;
-}
-
-button.consulta{
-    border: none;
-    background: #bb3232;
-    color: #f2f2f2;
-    padding: 12px;
-    font-size: 20px;
-    border-radius: 10px;
-    position: relative;
-    box-sizing: border-box;
-    transition: all 1200ms ease;
-}
-
-
-button.consulta:hover{
-    background: rgba(255, 0, 0, 0.274);
-    color: #680909;
-    box-shadow: inset 0 0 0 2px #ff000086;
-}
-
-button.guarda{
-        border: none;
-        background: #3a7999;
-        color: #f2f2f2;
-        padding: 12px;
-        font-size: 20px;
-        border-radius: 10px;
-        position: relative;
-        box-sizing: border-box;
-        transition: all 1200ms ease;
-}
-
-button.guarda:hover{
-    background: rgba(187, 187, 187, 0.678);
+button.editar:hover{
+    background: rgba(25, 201, 255, 0.199);
     color: #000000;
     box-shadow: inset 0 0 0 2px #1ba7ec;
 }
@@ -102,3 +38,41 @@ button#re:hover{
     color: #000ba1;
     box-shadow: inset 0 0 0 2px #043effb4;
 }
+
+button.eliminar{
+    border: none;
+    background: #bb3232;
+    color: #f2f2f2;
+    padding: 12px;
+    font-size: 12px;
+    border-radius: 20px;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 1200ms ease;
+}
+
+button.eliminar:hover{
+    background: rgba(255, 0, 0, 0.274);
+    color: #000000;
+    box-shadow: inset 0 0 0 2px #ff000086;
+}
+
+table {
+    font-size: 19PX;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    margin: 0 0 1em 0;
+    caption-side: top;
+ }
+ caption, td, th {
+    padding: 0.3em;
+ }
+ th, td {
+     text-align: center;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+ }
+ th.last, td.last {
+    border-right: 0;
+ }
