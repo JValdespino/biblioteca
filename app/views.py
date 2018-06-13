@@ -104,3 +104,5 @@ def eliminarP(request):
         per = models.prestamo.objects.get(idPrestamos=request.POST['idPrestamos'])
         per.delete()
     return redirect('/menu/prestamos/consulta')
+
+
