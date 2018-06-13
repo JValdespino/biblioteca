@@ -8,8 +8,8 @@
     {% load static from staticfiles %}
     <link rel="stylesheet" href="{% static 'css/estiloPrestamo.css' %}">
     <script>
-        function eliminarP(id,nom,isbn,idl,fe,fv){
-            var res = confirm('Confirma eliminar a '+nom+','+isbn+','+idl+','+fe+','+fv+' con el ID '+id);
+        function eliminarP(id,isbn){
+            var res = confirm('Confirma eliminar a '+isbn+' con el ID '+id);
             if(res){
                 var formulario = document.getElementById(id);
                 formulario.submit();
@@ -31,7 +31,7 @@
             {% for fila in registro %}
             <tr>
                 <td>{{fila.idPrestamos}}</td>
-                <td>{{fila.Isbn_id}}</td>
+                <td>{{fila.isbn_id}}</td>
                 <td>{{fila.Idl_id}}</td>
                 <td>{{fila.fecha}}</td>
                 <td>{{fila.fvencida}}</td>
@@ -45,8 +45,8 @@
                 <td>
                     <form id="{{fila.idPrestamos}}" action="eliminarP" method="POST">
                         {% csrf_token %}
-                        <input name="iPrestamos" value="{{fila.idPrestamos}}" type="hidden">
-                        <button type="button" onclick="eliminarP('{{fila.idPrestamos}}','{{fila.isbn_id}}','{{fila.Idl_id}}','{{fila.fecha}}','{{fila.fvencida}}')" class="eliminarP">Eliminar</button>
+                        <input name="idPrestamos" value="{{fila.idPrestamos}}" type="hidden">
+                        <button type="button" onclick="eliminarP('{{fila.idPrestamos}}','{{fila.isbn_id}}')" class="eliminarP">Eliminar</button>
                     </form>
                 </td>
             </tr>

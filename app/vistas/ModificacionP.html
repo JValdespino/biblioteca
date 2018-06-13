@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Modificación</title>
 </head>
 <body>
-    y>
-    <form action="modificar/" method="POST">
+    {{mp}}
+    <form action="modificarP" method="POST">
         {% csrf_token %}
         <input type="text" name="idPrestamo" maxlength="15" required pattern="[0-9]*$" value="{{reg.idPrestamo}}"><br>
         <input type="text" name="Isbn" value="{{reg.Isbn}}"><br>

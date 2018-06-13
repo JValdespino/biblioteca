@@ -105,4 +105,21 @@ def eliminarP(request):
         per.delete()
     return redirect('/menu/prestamos/consulta')
 
+def Modificacion(request):
+    if 'idPrestamos' in request.POST:
+        registro = models.prestamo.objects.get(idPrestamos=request.POST['idPrestamos'])
+        return render(request,'Modificacion.html',{"reg":registro})
+    else:
+        return redirect('consulta/')
+
+def modificarP(request):
+    if 'idPrestamos' in request.POST and 'Isbn' in request.POST and 'Idl' in request.POST and 'fecha' in request.POST and 'Fvencida' in request.POST:
+        p = models.prestamo(idPersona = request.POST['idPrestamos'])
+        p.Isbn=request.POST['Isbn']
+        p.Idl=request.POST['Idl']
+        p.fecha=request.POST['fecha']
+        p.Fvencida=request.POST['Fvencida']
+        p.save()
+    return redirect('consulta', {'mp':'Actualizacion Realizada'})
+
 
